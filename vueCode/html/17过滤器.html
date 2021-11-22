@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        过滤器：
+            对数据进行简单的逻辑处理
+            在vm中filters中定义过滤器（函数）
+            使用的时候 {{xxx | 过滤器1 | 过滤器2 | 过滤器3 ...}}
+     -->
+    <div class="root">
+    <h2>显示当前时间</h2>
+    <h4>现在是：{{currenTime | timeFormat}}</h4>
+    <!-- 一个过滤器 -->
+    <h4>传入格式的版本  现在是：{{currenTime | timeFormat('YYYY:MM:DD  HH:mm:ss')}}</h4>
+    <!-- 过滤器可以叠加 -->
+    <h4>传入格式的版本  现在是：{{currenTime | timeFormat('YYYY:MM:DD  HH:mm:ss' | timeSlice)}}</h4>
+    <!-- 过滤器可以用于动态标签 -->
+    <h4 :x="currenTime | timeFormat('YYYY:MM:DD  HH:mm:ss')"></h4>
+    </div>
+    <hr>
+</body>
+
+<script type="text/javascript">
+
+//全局过滤器
+Vue.filters={
+    timeSlice(val){
+            return val.slice(0,4);
+        }
+}
+
+new Vue({
+
+    el:'.root',
+    data:{
+        currenTime:16186283798,
+    },
+    methods:{
+        
+    },
+
+    //局部过滤器
+    filters:{ 
+        timeFormat(val,formatStr="YYYY-MM-DD HH:mm:ss"){
+            return dayjs(val).format(formatStr);
+        },
+        timeSlice(val){
+            return val.slice(0,4);
+        }
+    }
+});
+</script>
+</html>

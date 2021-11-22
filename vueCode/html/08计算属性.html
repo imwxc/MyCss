@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div class="root">
+    <h1>插值语法实现</h1>
+    <div>
+        姓：<input type="text" name="" id="" v-model="firName"><br>
+        名：<input type="text" name="" id="" v-model="lastName"><br>
+        姓名：<span>{{firName}}{{firName||lastName?'+':''}}{{lastName}}</span><br>
+    </div>
+    </div>
+    <hr>
+    <div class="root2">
+    <h1>methods实现</h1>
+        姓：<input type="text" name="" id="" v-model="firName"><br>
+        名：<input type="text" name="" id="" v-model="lastName"><br>
+        姓名：<span>{{getFullName()}}</span><br>
+    </div>
+    <hr>
+    <!-- 计算属性要根据vm已有的属性计算得来
+        原理：借助getter&setter
+        get函数：初次读取时调用
+                所依赖的数据发生变化时
+        必须使用set来响应计算属性的修改。
+
+     -->
+    <div class="root3">
+        <h1>计算属性实现</h1>
+            姓：<input type="text" name="" id="" v-model="firName"><br>
+            名：<input type="text" name="" id="" v-model="lastName"><br>
+            姓名：<span>{{fullName}}</span><br>
+    </div>
+    <hr>
+    <div class="root4">
+    <h1>计算属性简写（计算属性不进行修改的情况下）</h1>
+    姓：<input type="text" name="" id="" v-model="firName"><br>
+            名：<input type="text" name="" id="" v-model="lastName"><br>
+            姓名：<span>{{fullName}}</span><br>
+    </div>
+    <hr>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'.root',
+        data: {
+            firName:"",
+            lastName:"",
+        },
+    });
+    new Vue({
+        el:'.root2',
+        data: {
+            firName:"",
+            lastName:"",
+        },
+        methods: {
+            getFullName(){
+                return this.firName||this.lastName?this.firName+"-"+this.lastName:"";
+            }
+        }
+    });
+    new Vue({
+        el:'.root3',
+        data: {
+            firName:"",
+            lastName:"",
+        },
+        computed: {
+            fullName:{
+                //初次读取时调用
+                //所依赖的数据发生变化时
+                get(){
+                    return this.firName||this.lastName?this.firName+"-"+this.lastName:"";
+                },
+                set(value){
+                    console.log("set:",value);
+                    // this.lastName=value;
+                }
+            }
+        },
+    });
+    new Vue({
+        el:'.root4',
+        data: {
+            firName:"",
+            lastName:"",
+        },
+        computed: {
+            //计算属性简写方式
+            //只有get的时候才能使用
+            fullName(){
+                    return this.firName||this.lastName?this.firName+"-"+this.lastName:"";
+            }
+        },
+    });
+</script>
+</html>

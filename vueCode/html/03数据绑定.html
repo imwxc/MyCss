@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <script src="../js/vue.js">
+    </script>
+</head>
+
+<body>
+    <div id="one-way-data-bind">单向数据绑定:
+        <input type="text" id="" :value="name" />
+        <a>{{name}}</a><br>
+    </div>
+    <div id="two-way-data-bind">双向数据绑定(只能用在表单类元素上)
+        <!-- <input type="text" name="" id="" v-model:value="name" /> -->
+        <input type="text" name="" id="" v-model="name" />
+        <a>{{ name }}</a>
+    </div>
+    <script>
+        new Vue({
+            el: '#one-way-data-bind',
+            data: {
+                name: 'name1',
+            }
+        });
+        new Vue({
+            el: "#two-way-data-bind",
+            data: {
+                name: "name2",
+            }
+        })
+    </script>
+</body>
+
+</html>

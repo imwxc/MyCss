@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<!-- 
+    条件渲染 
+
+    v-if：适用于切换频率较低的场景
+    使用v-if的时候，元素可能无法被获取到
+
+    v-if、v-else-if、v-else之间的结构不能被打断
+
+    v-show：适用于切换频率较高的场景
+
+
+
+
+
+
+-->
+
+<body>
+    <div class="root">
+        <!-- v-show 的底层是display：none -->
+    　<h2 v-show="isShowh2">welcome</h2>
+    <h2 v-if="isIfh2">welcome</h2>
+    </div>
+    <hr>
+    <div class="root2">
+        <h1>当前n为：{{N}}</h1>
+    <button @click="N++">点击N++</button>
+    <h2 v-if="N===1">wel1</h2>
+    <h2 v-else-if="N===2">wel2</h2>
+    <h2 v-else-if="N===3">wel3</h2>
+    <h2 v-else> else 中的情况</h2>
+    </div>
+    <hr>
+
+    <div class="root3">
+        <template class="root3">
+            <h2 v-if=" n === 1 ">temple</h2>
+            <h2 v-if=" n === 1 ">temple</h2>
+            <h2 v-if=" n === 1 ">temple</h2>
+            <h2 v-if=" n === 1 ">temple</h2>
+        </template>
+    </div>
+    <hr>
+    <hr>
+
+</body>
+<script type="text/javascript">
+new Vue({
+    el:'.root',
+    data:{
+        isShowh2:true,
+        isIfh2:true,
+        N:0,
+    },
+    methods:{
+        
+    } 
+})
+
+new Vue({
+    el:'.root2',
+    data:{
+        isShowh2:true,
+        isIfh2:true,
+        N:0,
+    },
+    methods:{
+        
+    } 
+})
+
+new Vue({
+    el:'.root3',
+    data:{
+        isShowh2:true,
+        isIfh2:true,
+        n:1,
+    },
+    methods:{
+        
+    } 
+})
+</script>
+</html>

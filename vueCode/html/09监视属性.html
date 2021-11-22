@@ -1,0 +1,199 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div class="root">
+    <h3>天气:{{info}}</h3>
+    <button @click="changeWeather" >切换</button>
+    </div>
+    <hr>
+    <div class="root2">
+        <h2>监视属性</h2>
+        <!-- 监视属性watch：
+                当监视的属性变化时回调自动调用
+                被监视属性必须存在才能监视
+                监视两种写法：
+                    1.在new Vue中定义
+                    2.使用vm.$watch('属性名',{配置对象})来定义
+        -->
+        <h3>天气:{{info}}</h3>
+        <button @click="changeWeather" >切换</button>
+    </div>
+    <hr>
+    <div class="root3">
+        <h2>深度监视</h2>
+        <h3>天气:{{info}}</h3>
+        <button @click="changeWeather" >切换</button>
+        <br>
+        <span>a的值是{{numbers.a}}</span>
+        <button @click="numbers.a++">点击a++</button>
+        <br>
+        <span> b的值是{{numbers.b}}</span>
+        <button @click="numbers.b++">点击b++</button>
+    </div>
+    <hr>
+    <div class="root4">
+    <h2>监视简写</h2>
+    只有使用handler的时候才用简写
+    <h3>天气:{{info}}</h3>
+        <button @click="changeWeather" >切换</button>
+    </div>
+    <hr>
+    <div class="root5">
+        <h1>姓名案例（watch实现）</h1>
+        <!-- 
+            computed和watch的区别：
+            watch可以进行异步操作，
+            被Vue管理的函数都写成普通形式，
+            不被Vue管理的函数：定时器回调，ajax回调，promise的回调等，写成箭头函数来确保this指向的是this
+         -->
+        姓：<input type="text"v-model="firName"><br>
+        名：<input type="text"v-model="lastName"><br>
+        姓名：<span>{{fullName}}</span><br>
+        </div>
+        <hr>
+</body>
+<script type="text/javascript">
+    new Vue({
+       el:'.root',
+       data: {
+           isHot:true,
+       },
+       computed: {
+           info(){
+            return this.isHot? "炎热":"凉爽"
+           }
+       },
+       methods: {
+           changeWeather(){
+               this.isHot=!this.isHot;
+           }
+       },
+       
+    });
+    new Vue({
+       el:'.root2',
+       data: {
+           isHot:true,
+       },
+       computed: {
+           info(){
+            return this.isHot? "炎热":"凉爽"
+           }
+       },
+       methods: {
+           changeWeather(){}
+       },
+       //第一种方式
+       watch:{
+            isHot:{
+                //dangisHot发生改变时调用
+                handler(newVal,oldVal){
+                        console.log("111")
+                },
+                //初始化事调用一下handler
+                immediate:true,
+            },
+       },
+    });
+    // vm.$watch('isHot',{
+    //     //dangisHot发生改变时调用
+    //     handler(newVal,oldVal){
+    //         console.log("222")
+    //     },
+    //     //初始化事调用一下handler
+    //     immediate:true,
+    // });
+    new Vue({
+       el:'.root3',
+       data: {
+           isHot:true,
+           numbers:{
+               a:1,
+               b:2,
+           }
+       },
+       computed: {
+           info(){
+            return this.isHot? "炎热":"凉爽"
+           }
+       },
+       methods: {
+           changeWeather(){
+               this.isHot=!this.isHot;
+           }
+       },
+       watch:{
+            isHot:{
+                //dangisHot发生改变时调用
+                handler(newVal,oldVal){
+                        console.log("111")
+                },
+                //初始化事调用一下handler
+                immediate:true,
+            },
+            'numbers.a':{
+                handler(newVal,oldVal){
+                        console.log("aaa")
+                },
+                //初始化事调用一下handler
+                // immediate:true,
+            },
+            //numbers中任意一个值改变都可以监听到
+            numbers:{
+                deep:true,
+                handler(newVal,oldVal){
+                    console.log("number changed");
+                }
+            }
+       },
+       
+    });
+    let vm4=new Vue({
+       el:'.root4',
+       data: {
+           isHot:true,
+       },
+       computed: {
+           info(){
+            return this.isHot? "炎热":"凉爽"
+           }
+       },
+       methods: {
+           changeWeather(){
+               this.isHot=!this.isHot;
+           }
+       },
+    //    watch:{
+    //        isHot(){
+    //            console.log("number  简写")
+    //        }
+    //    }
+    });
+    vm4.$watch('isHot', function(){
+        console.log("number $watch 简写")
+    })
+
+    new Vue({
+        el:'.root5',
+        data: {
+            firName:"",
+            lastName:"",
+            fullName:"",
+        },
+        //计算属性没有办法进行异步计算
+        //
+        watch:{
+            firName(newVal,oldVal){
+                this.fullName=newVal+'-'+this.lastName;
+            },
+            lastName(newVal,oldVal){
+                this.fullName=this.firName+'-'+newVal;
+            },
+        }
+    })
+</script>
+</html>

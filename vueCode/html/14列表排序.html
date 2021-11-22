@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div class="root">
+        <h2>人员列表</h2>
+        <input type="text" name="" id="" v-model="keyword" placeholder="请输入名字"></input>
+        <button @click="upSort"> 年龄升序</button>
+        <button @click="downSort"> 年龄降序</button>
+        <button @click="reSet"> 原顺序</button>
+        <ul>
+            <li v-for="(p,index) in showPersons" :key="p.id">{{p.name}}--{{p.age}}--{{p.gender}}</li>
+        </ul>
+    </div>
+    <hr />
+  </body>
+
+  <script type="text/javascript">
+    new Vue({
+      el: ".root",
+      data: {
+        keyword: "",
+        persons: [
+          { id: "001", name: "马冬梅", age: 18, gender: "女" },
+          { id: "002", name: "周冬雨", age: 19, gender: "女" },
+          { id: "003", name: "周杰伦", age: 20, gender: "男" },
+          { id: "004", name: "温兆伦", age: 21, gender: "男" },
+        ],
+        sortType:0, // 1:升序 2:降序 0:原顺序
+    },
+      computed:{
+        showPersons:{
+            get(){
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyword) > -1;
+                })
+                .sort((p1,p2)=>{
+                    if (this.sortType){
+                        return this.sortType===1?p1.age-p2.age:p2.age-p1.age;
+                    }
+                    return 0;
+                })
+            }
+        }
+    },
+    methods:{
+        upSort(){
+            this.sortType=1;
+        },
+        downSort(){
+            this.sortType=2;
+        },
+        reSet(){
+            this.sortType=0;
+        }
+    }
+    });
+  </script>
+</html>

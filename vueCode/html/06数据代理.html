@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div class="数据代理">
+        数据代理：通过一个对象对另一个对象中的属性进行操作
+    </div>
+    <hr>
+    <div class="使用数据代理">
+        <h1>使用数据代理</h1>
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+    </div>
+</body>
+<script class="复习defineProperty"type="text/javascript">
+    let person ={
+        name: 'John',
+        sex: 'M',
+    };
+    let number=19;
+    Object.defineProperty(person, 'age',{
+        // value:19, //有set 和 get的时候不能使用value
+        // writable:true,//是否可以修改
+        enumerable:true,//枚举
+        configurable:true,//删除
+        get(){
+            return number;
+        },
+        set(value){
+            number = value;
+        }
+    });
+    /**
+     * vue 中的数据代理：通过vm来对vm._data中的属性进行操作
+     * 原理：通过Object.defineProperty将vm._data中的属性对应的getter&setter放到vm上
+    */
+    const vm =new Vue({
+        el:".使用数据代理",
+        //只有在data会进行数据代理和数据劫持，
+        data:{
+            name:"111",
+            address:"add222",
+        }
+    })
+    </script>
+</html>

@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+    <style>
+        .basics { 
+            background-color: antiquewhite;
+            height: 100px;
+            width: 100px;
+        }
+        .happy{background-color: coral;}
+        .sad{background-color:cornflowerblue;}
+        .normal{background-color:cadetblue;}
+        .s1{background-color:aliceblue;}
+        .s2{background-color:yellowgreen;}
+        .s3{background-color:violet;}
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 绑定class样式：字符串写法 适用于需要动态指定样式的场景-->
+    <div class='basics' :class='mood' @click='changeMood'>{{name}}</div>
+    <!-- 绑定class样式：数组写法 适用于绑定样式不确定，样式名不确定-->
+    <div class ="basics" :class='arr' @click='randomClass'>{{name}}</div>
+    <!-- 绑定class样式：数组写法 适用于绑定样式确定，样式名确定，但是需要动态决定是否使用-->
+    <div class ="basics" :class='obj' @click='randomProp'>{{name}}</div>
+        <!-- 绑定 style 对象写法 原有style中的属性 font-size ==> fontSize  -->
+    <div class ="basics" :style="styleObj" @click='randomStyle'>{{name}}</div>
+<!-- 绑定style 数组写法  通过将多个styleobj传到数组中使用 -->
+    <div class="basics" :style="[styleArr]"></div>
+    </div>
+    <hr>
+</body>
+<script type='text/javascript'>
+new Vue({
+    el:'#root',
+    data:{
+        name:'111',
+        mood:'happy',
+        arr:['s1','s2','s3'],
+        obj:{
+            s1:false,
+            s2:false,
+        },
+        styleObj:{
+            fontSize:'40px',
+            color:'black',
+        },
+        styleObj1:{
+            backgroundColor:'red',
+        },
+        styleArr:[styleObj,styleObj1],
+        
+    },
+    methods:{
+        changeMood(){
+            this.mood=this.mood==='sad'?'happy':'sad';
+        },
+        randomClass(){
+            if(this.arr.length>0){this.arr.pop(Math.floor(Math.random()*3));}
+            else{this.arr.push('s1');
+            this.arr.push('s2');
+            this.arr.push('s3');}
+            
+        },
+        randomProp(){
+            Math.floor(Math.random()*2)?this.obj.s1=true:this.obj.s2=true;
+        },
+        randomStyle(){
+
+        }
+    }
+})
+</script>
+
+</html>

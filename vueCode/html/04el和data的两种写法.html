@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src='../js/vue.js' />
+</head>
+
+<body>
+    <div id="root">
+        你好{{name}}
+    </div>
+
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: "#root", //第一次种写法固定死了
+
+        //data第一种写法
+        data: {
+            name: "wxc111"
+        },
+
+        //data:第二种写法（函数式）防止作用域污染
+        //为了防止this指向全局，Vue管理的函数不能使用()=>{}的写法 
+        data(params) {
+
+            return {
+                name: "wxc111",
+            };
+        }
+
+    });
+    setTimeout(() => {
+        vm.$mount("#root") // 第二种写法较为灵活
+
+    }, 1000);
+</script>
+
+</html>

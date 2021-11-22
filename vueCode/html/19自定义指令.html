@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <!-- 
+        自定义指令： 操作DOM的一次封装
+        
+
+     -->
+<div class="root">
+    <h2>当前n:
+        <span v-text="n"></span>
+    </h2>
+    <h2>放大10倍的n:
+        <span v-big="n"></span>
+    </h2>
+    <button @click="n++">n+1</button>
+</div>
+<hr>
+<div class="root2">
+    <h2>当前n:
+        <span v-text="n"></span>
+    </h2>
+    <h2>放大10倍的n:
+        <span v-big="n"></span>
+    </h2>
+    <button @click="n++">n+1</button>
+    <input type="text" v-focusBind="n"/>
+</div>
+<hr>
+</body>
+
+<script type="text/javascript">
+// 全局自定义指令：类似于过滤器
+Vue.directive = {
+    focusBind1:{
+        // 指令和元素成功绑定时
+        // 写样式和初始值
+        // 函数中的this全部为window
+
+        bind(){
+            element.value = binding.value;
+        },
+        // 指令所在元素被插入页面时
+        // 写获取焦点或者获取父元素
+        inserted(){
+            element.focus();
+        },
+        // 指令所在的模版被重新解析时
+        update(){
+            element.value = binding.value;
+        },
+    },
+
+}
+
+
+new Vue({
+
+    el:'.root',
+    data:{
+        n:1,
+    },
+    methods:{
+        
+    },
+    directives:{
+        // 函数式调用的时机：
+        // 指令和元素绑定的时候会调用
+        // 指令所在的模版被重新解析的时候会调用
+
+        big(element,binding){
+            element.innerText = binding.value * 10
+            
+        }
+    }
+});
+new Vue({
+
+el:'.root2',
+data:{
+    n:1,
+},
+methods:{
+    
+},
+directives:{
+    // 对象式写法：
+
+    focusBind:{
+        // 指令和元素成功绑定时
+        // 写样式和初始值
+        // 函数中的this全部为window
+
+        bind(){
+            element.value = binding.value;
+        },
+        // 指令所在元素被插入页面时
+        // 写获取焦点或者获取父元素
+        inserted(){
+            element.focus();
+        },
+        // 指令所在的模版被重新解析时
+        update(){
+            element.value = binding.value;
+        },
+    }
+}
+});
+</script>
+</html>

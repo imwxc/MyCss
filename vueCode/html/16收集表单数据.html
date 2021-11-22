@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <!-- 
+        v-model收集表单数据：
+            text框收集用户的输入
+            radio单选需要额外配置value
+            checkbox：未配置value就收集 checked 
+                      已配置value就收集 value到数组中
+            v-model修饰符：
+                lazy：失去焦点再更新
+                number：输入字符串转为有效数字
+                trim：去掉输入首位空格
+     -->
+    <div class="root">
+    <form @submit.prevent="demo">
+        账号：<input v-model="account" type="text"><br/>
+        密码：<input v-model="password" type="password"><br/><br/>
+        性别：男 <input type="radio" name="sex" value="male" v-model="gender"> 女 <input type="radio" name="sex" value="female" v-model="gender"><br/><br/>
+        爱好：<br/>111 <input type="checkbox" v-model="hobbys" value="111"><br/> 222 <input type="checkbox" v-model="hobbys" value="222"><br/> 333 <input type="checkbox" v-model="hobbys" value="333"><br/> 444 <input type="checkbox" v-model="hobbys" value="444"><br/><br/>
+        school:
+        <select>
+            <option v-model="city" value="">选择校区</option>
+            <option v-model="city" value="beijing">北京</option>
+            <option v-model="city" value="shanghai">上海</option>
+            <option v-model="city" value="shenzhen">深圳</option>
+            <option v-model="city" value="wuhan">武汉</option>
+        </select>
+
+        <br/><br/>
+        其他：<textarea v-model="other"></textarea><br/><br/>
+        <button>提交</button> 
+    </form>
+    </div>
+    <hr>
+
+</body>
+
+<script type="text/javascript">
+new Vue({
+
+    el:'.root',
+    data:{
+        account:'',
+        password:'',
+        gender:'',
+        hobbys:[],
+        city:'',
+        other:'',
+
+    },
+    methods:{
+        demo(){
+
+        },
+    },
+});
+</script>
+</html>

@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+<div class="conclusion">
+
+</div>
+<hr>
+<div class="root">
+    <h2>人员列表</h2>
+    <h4>数据更新的问题</h4>
+    <!-- 单独修改属性可以被监听到
+         修改整个对象不会被监听到 -->
+    <button @click="updateMadongmei">更新马冬梅</button>
+    <ul>
+        <li v-for="(p,index) in persons" :key="index">{{p.name}}----{{p.age}}</li>
+    </ul>
+</div>
+<hr>
+<div class="root2">
+<h2>学校名称：{{name}}</h2>
+<h2>学校地址：{{address}}</h2>
+<h4>vue监测数据改变的原理  for 对象 && 模拟数据监测</h4>
+</div>
+<hr>
+<div class="root3">
+<h4>Vue.set()的使用</h4>
+<h2>name:{{name}}</h2>
+<h2>address:{{address}}</h2>
+<hr>
+<h2>Name:{{student.name}}</h2>
+<button @click="addStudentSex">点击添加学生性别</button>
+<h2>{{student.sex?"获取到了":"没有这个属性"}}sex:{{student.sex}}</h2> 
+<h2>Age:  rAge:{{student.age.rAge}} --- sAge:{{student.age.sAge}}</h2>
+<h2>friends:</h2>
+<ul>
+    <li v-for="(friend,i) in student.friends" :key='i'> 
+        friendName:{{student.friends[i].name}}---friendAge:{{student.friends[i].age}}
+    </li>
+</ul>
+<h2>hobbys:</h2>
+<h4>vue 监测数组的变化</h4>
+<!-- 只有调用了改变数组的api vue才能检测到数组的改变并更新视图 vue通过包装Array.prototype上的方法进行了包装，实现了检测数组变更和视图更新-->
+<!-- 使用Vue.set 可以变更数组中的数据并刷新视图 -->
+<ul>
+    <li v-for="(h,i) in student.hobbys" :key='i'>
+        hobby:{{student.hobbys[i]}}
+    </li>
+</ul>
+</div>
+<hr>
+</body>
+
+<script type="text/javascript">
+     new Vue({
+      el: ".root",
+      data: {
+        persons: [
+          { id: "001", name: "马冬梅", age: 18, gender: "女" },
+          { id: "002", name: "周冬雨", age: 19, gender: "女" },
+          { id: "003", name: "周杰伦", age: 20, gender: "男" },
+          { id: "004", name: "温兆伦", age: 21, gender: "男" },
+        ],
+    },
+    methods: {
+        updateMadongmei(){
+            // this.persons[0].name="马冬梅new" // 奏效  
+            this.person[0]={ id: "001", name: "马老师", age: 50, gender: "男" } //不奏效
+        }
+    }
+    });
+    const vm = new Vue({
+      el: ".root2",
+      data: {
+        name:"school",
+        address:"None",
+    },
+    methods: {
+        updateMadongmei(){
+            // this.persons[0].name="马冬梅new" // 奏效  
+            this.person[0]={ id: "001", name: "马老师", age: 50, gender: "男" } //不奏效
+        }
+    }
+    });
+    new Vue({
+        el:'.root3',
+        data:{
+            name:"name111",
+            address:"address222",
+            student:{
+                name:"stuName112",
+                age:{
+                    rAge:"47",
+                    sAge:"18", 
+                },
+                hobbys:['抽烟','喝酒','烫头'],
+                friends:[
+                    {name:"f111",age:"18"},
+                    {name:"f222",age:"20"},
+                    {name:"f333",age:"19"},
+                ]
+            }
+        },
+        methods:{
+            addStudentSex(){
+                Vue.set(this._data.student,"sex","男")
+            }
+        },
+    });
+</script>
+</html>

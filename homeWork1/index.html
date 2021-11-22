@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <script src="../vueCode/js/vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body class='body'>
+    <div class="img_container">
+        <button class="lbtn" @click="onLastImage">上一张</button>
+        <div class='inner_container'>
+        <div
+            v-show="getPoision(index)"
+            v-for='(imgItem,index) in imgs' :key='imgItem'
+            class="box"
+            :class="getPoision(index)"
+            >
+            <img 
+            :src="imgs[index]">
+        </div>
+
+    </div>
+        <button class="rbtn" @click="onNextImage">下一张</button>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>

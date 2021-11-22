@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <div class="root1">
+    
+    </div>
+    <hr>
+
+</body>
+
+<script type="text/javascript">
+    let data={
+        name:"shangguigu",
+        address:"beigjing"
+    }
+
+    // 创建监视的实例对象
+    const obs = new Observer(data);
+    function Observer(obj){
+        Object.keys(obj).forEach(
+            key =>{
+                Object.defineProperty(this,key,{
+                    get(){
+                        return obj[key]
+                    },
+                    set(val){
+                        obj[key]=val
+                    }
+                })
+            }
+        )
+    }
+    
+    //  vue会递归的对属性添加getter和setter  
+
+</script>
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+<div class="root">
+    <h2>人员列表</h2>
+    <h4>数据监视实现</h4>
+    <input type="text" name="" id="" v-model="keyword" placeholder="请输入名字"></input>
+    <ul>
+        <li v-for="(p,index) in showPersons" :key="p.id">{{p.name}}--{{p.age}}--{{p.gender}}</li>
+    </ul>
+    <hr>
+</div>
+<div class="root2">
+    <h2>人员列表</h2>
+    <h4>计算属性实现</h4>
+    <input type="text" name="" id="" v-model="keyword" placeholder="请输入名字"></input>
+    <ul>
+        <li v-for="(p,index) in showPersons" :key="p.id">{{p.name}}--{{p.age}}--{{p.gender}}</li>
+    </ul>
+</div>
+<hr>
+</body>
+
+<script type="text/javascript">
+new Vue({
+
+    el:'.root',
+    data:{
+        keyword:"",
+        persons:[
+                {id:"001",name:"马冬梅",age:18,gender:"女"},
+                {id:"002",name:"周冬雨",age:19,gender:"女"},
+                {id:"003",name:"周杰伦",age:20,gender:"男"},
+                {id:"004",name:"温兆伦",age:21,gender:"男"},
+        ],
+        showPersons:[],
+    },
+    watch:{
+        keyword:{
+            immediate:true,
+            handler(newVal,oldVal){
+                console.log("$$$ newVal",newVal);
+                this.showPersons=this.persons.filter((p)=>{
+                    return p.name.indexOf(newVal) > -1;
+                })
+            }
+        }
+    }
+});
+
+new Vue({
+
+    el:'.root2',
+    data:{
+        keyword:"",
+        persons:[
+                {id:"001",name:"马冬梅",age:18,gender:"女"},
+                {id:"002",name:"周冬雨",age:19,gender:"女"},
+                {id:"003",name:"周杰伦",age:20,gender:"男"},
+                {id:"004",name:"温兆伦",age:21,gender:"男"},
+        ],
+    },
+    methods:{
+        
+    },
+    computed:{
+        showPersons:{
+            get(){
+                return this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyword) > -1;
+                })
+            }
+        }
+    }
+});
+</script>
+</html>

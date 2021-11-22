@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <script src='../js/vue.js'></script>
+</head>
+
+<body>
+    <!-- 事件基本使用 -->
+    <div class="root"> 
+        <!-- 使用@ 或者v-on来绑定事件，事件不能用箭头函数，使用$event来在函数调用时候为事件对象占位 -->
+        <!-- <button v-on:click="showInfo"> 点击提示信息</button> -->
+        <button @click="showInfo(66,$event)"> 点击提示信息</button>
+    </div>
+    <hr>
+    <!-- 事件修饰符 -->
+    <!-- 常用的事件修饰符：
+            prevent：阻止默认事件
+            stop：阻止事件冒泡
+            once：事件只触发一次
+            capture：使用事件捕获模式
+            self：event.target是当前元素才有用
+            passive：默认行为立即执行，不等待回调执行结束 ，类似于函数节流和函数防抖，都是控制函数在时间轴上执行的方式
+
+        修饰符可以连续写
+    -->
+    <div class="root2">
+        <a href="./01初识.html" @click.prevent="showInfo">点击跳转01.html</a>
+    </div>
+    <hr>
+    <!-- 键盘事件 -->
+    <!--  常用按键别名：
+            回车：enter
+            删除&退格：delete
+            退出：esc
+            换行：tab （配合keydown使用）
+            上下左右：up，down，left，right
+
+        修饰键可以连用表示多个键同时按
+     
+    -->
+    <div class="root3">
+        <h3>welcome{{name}}</h3>
+        <input type="text" name="" id="" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+    </div>
+    <hr>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:".root",
+        data:{
+            name: "wwwwww",
+            info:"infoinfoinfo",
+        },
+        //methods中的方法不进行数据代理，因为调用函数没有必要代理
+        methods:{
+            showInfo(number,event){
+                //this:是vm对象
+                console.log(event.target.innerText);
+                console.log(number);
+                alert("Show info:"+this.info);
+            }
+        }
+    });
+    new Vue({
+        el:'.root2',
+        data:{
+
+        },
+        methods:{
+            showInfo(){
+                alert("Jump to 01");
+            },
+        }
+    });
+    new Vue({
+        el:'.root3',
+        data:{},
+        methods:{
+            showInfo(e){
+                console.log(e.target.value);
+            }
+        }
+    })
+</script>
+</html>
