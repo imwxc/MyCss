@@ -7,7 +7,36 @@
 <body>
     <!-- 
         自定义指令： 操作DOM的一次封装
+        定义语法：
+            局部；
+                new Vue({
+                    directives:{
+                        指令名 ： 配置对象
+                    }
+                })
+
+                new Vue({
+                    directives:{
+                        指令名 ： 回调函数
+                    }
+                })
+
+            全局：
+                Vue.directive(
+                    指令名，配置对象
+                )
+
+                Vue.directive(
+                    指令名，回调函数
+                )
+        配置对象中的三个回调函数：
+            1. bind 指令和元素绑定时调用
+            2.inserted 指令绑定的元素被插入到页面时调用
+            3.update 指令绑定的元素更新时调用
         
+        tips；
+            定义指令不加v-，使用指令需要加v-
+            指令名要定义成一个单词，不要有连接符 - 
 
      -->
 <div class="root">
