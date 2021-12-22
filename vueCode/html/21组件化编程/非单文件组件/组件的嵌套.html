@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <script src="../js/vue.js"></script>
+  </head>
+  <!-- 
+    
+ -->
+  <body>
+    <div class="root">
+      <school></school>
+      <hr />
+
+    </div>
+    <hr />
+    <div class="root2"><hello />></div>
+    <hr />
+  </body>
+
+  <script type="text/javascript"> 
+    // 组件指定特定元素，在vm中指定元素统一管理下
+    //  创建组件
+    const person = Vue.extend({
+      template: `
+        <div>
+            <h3>personName: {{personName}}</h3>
+            <h3>personAddress:{{personAddress}}</h3>
+        </div>
+    `,
+      data(params) {
+        return {
+          personName: "personName222",
+          personAddress: "personAddress222",
+        };
+      },
+      methods: {},
+    });
+
+    const school = Vue.extend({
+      template: `
+        <div> 
+            <h2>name:{{name}}</h2>
+            <h2>address:{{address}}</h2>
+            <person></person>
+        </div>
+      `,
+	  name :"school",
+      data(params) {
+        return {
+          name: "123",
+          address: "Address123",
+        };
+      },
+      methods: {},
+      components:{
+        person
+      }
+    });
+
+    // 注册组件
+    // 局部注册
+    new Vue({
+      el: "root",
+      components: {
+        school,
+      },
+    });
+
+    // 使用组件
+  </script>
+</html>

@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="../js/vue.js"></script>
+  </head>
+  <!-- 
+    1.一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+	2.为什么要有这个关系？ 
+		因为需要让组件实例对象可以访问到Vue原型上的属性、方法
+
+	演示流程：
+		
+ -->
+  <body>
+    <div class="root">
+      <hr />
+    </div>
+    <hr />
+    <hr />
+  </body>
+
+  <script type="text/javascript">
+    // 组件指定特定元素，在vm中指定元素统一管理下
+    //  创建组件
+    function Demo() {
+      this.a = 1
+      this.b = 2
+    }
+
+    const d = new Demo()
+    console.log("构造函数原型",Demo.prototype)
+    console.log("对象原型",d.__proto__)
+
+    Demo.prototype.x = 99
+
+
+    // 使用组件
+  </script>
+</html>
