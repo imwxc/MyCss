@@ -2,26 +2,25 @@
   <head>
     <script src="../js/vue.js"></script>
   </head>
-<!-- 
-    Vue使用组件的步骤：
-        1.定义组件
-        2.注册组件
-        3.使用组件
-    
-    如何定义组件？
-        使用Vue.extend(options)创建，options和创建VM的options区别如下：
-            1.没有el属性
-            2.data必须写成函数，防止组件复用的时候存在引用问题
-        使用template来定义组件结构
+  <!-- 
+    几个注意点：
+		1.组件名
+        	一个单词：
+				首字母小写
+				首字母大写
+			多个单词：
+				kebab-case命名：my—school
+				CamelCase命名：MySchool（只在Vue脚手架中使用）
+			备注：
+				组件名要回避HTML中的标签名
+				使用name配置项指定组件在开发者工具中呈现的名字
+          
+		2.组件标签；
+			第一种写法：<school></school>
+			第二种写法：<school/> 在不使用脚手架的时候会导致后续的组件标签都无法渲然
 
-    如何注册组件？
-        1.局部注册：在Vm中传入components属性来配置
-        2.全局注册：在Vue.component中注册
-    
-    如何使用组件？
-        编写组件标签：
-            <tempComponent></tempComponent>
-
+		3.简写方式：
+			const school = Vue.extend({options}) 可简写为 const school = options 
  -->
   <body>
     <div class="root">
@@ -30,22 +29,21 @@
       <person />
     </div>
     <hr />
-    <div class="root2">
-    <hello/>>
-    </div>
-    <hr>
+    <div class="root2"><hello />></div>
+    <hr />
   </body>
 
-  <script type="text/javascript">
+  <script type="text/javascript"> 
     // 组件指定特定元素，在vm中指定元素统一管理下
     //  创建组件
     const school = Vue.extend({
       template: `
-        <div>
+        <div> 
             <h2>name:{{name}}</h2>
             <h2>address:{{address}}</h2>
         </div>
       `,
+	  name :"school",
       data(params) {
         return {
           name: "123",
@@ -72,10 +70,10 @@
     });
 
     const hello = Vue.extend({
-        template:`
+      template: `
             <div>hello!</div>
-        `
-    })
+        `,
+    });
 
     // 注册组件
     // 局部注册
@@ -88,9 +86,7 @@
     });
 
     // 全局注册
-    Vue.component("hello",hello);
-
-
+    Vue.component("hello", hello);
 
     // 使用组件
   </script>
