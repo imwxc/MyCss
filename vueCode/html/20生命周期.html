@@ -27,7 +27,9 @@
     👇 mounted() ：此时页面呈现的是经过Vue编译的DOM，此时操作DOM均有效，但是要尽可能的避免，
                     一般在这里开启定时器，发送网络请求，订阅消息，绑定自定义事件、关闭定时器、取消消息订阅 等初始化操作
     
-    👇 Mounted：一个阶段：包括 beforeUpdated、根据新旧DOM进行比较，然后完成页面更新、updated：此时的页面和数据都是最新的
+    👇 Mounted：一个DOM更新的阶段：包括 beforeUpdated: 此时数据是新的，页面是旧的、
+                            虚拟DOM更新：根据新旧DOM进行比较，然后完成页面更新、
+                            updated: 此时的页面和数据都是最新的
 
         👇 调用vm.$destroy() : 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及 自定义事件监听器 。
     
@@ -38,7 +40,24 @@
 
     👇 destoryed() 
 
-    生命周期函数；
+    生命周期函数:
+        创建：
+            将要创建：beforeCreated
+            创建完毕：created
+        挂载：
+            将要挂载：beforeMount
+            挂载完毕：mounted
+        更新：
+            将要更新：beforeUpdated
+            更新完毕：updated
+        销毁：
+            将要销毁：beforeDestory
+            销毁完毕：destoryed
+
+    常用的生命周期钩子：
+        mounted： 发送请求，启动定时器，绑定自定义事件、订阅消息等
+        beforeDestory：清除定时器、解绑自定义事件、取消订阅消息etc
+
          
 
 
