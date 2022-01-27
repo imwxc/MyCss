@@ -1,18 +1,19 @@
 <template>
   <div>
-      <img src="./assets/logo.png" alt="logo">
-      <MySchool></MySchool>
-      <MySchool></MySchool>
-      <MySchool></MySchool>
+      <MyStudent name="Student1" address="add1" age="18"/>
+      <MyStudent name="Student2" address="add2" age="19"/>
+      <MyStudent name="Student3" address="add3" :age="222"/>
   </div>
 </template>
 
 <script>
-import MySchool from "./MySchool.vue"
+import MyStudent from './components/MyStudent';
 export default {
     name: "App",
     components:{
-        MySchool
+        MyStudent,
+    },
+    methods:{
     }
 }
 </script>
