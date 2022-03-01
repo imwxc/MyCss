@@ -20,9 +20,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /* 组件的样式 */
 .demo {
-	background-color: skyblue ;
+	background-color: aqua;
 }
-</style>>
+</style>

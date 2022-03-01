@@ -8,6 +8,8 @@
 
 <script>
 // 组件交互的代码
+// 引入混合
+import { mixin } from "./mixin";
 export default {
 	name: "MySchool",
 	data(params) {
@@ -17,12 +19,13 @@ export default {
 			address: "Address123",
 		};
 	},  
+	mixins: [mixin],
 };
 </script>
 
-<style scoped>
+<style>
 /* 组件的样式 */
 .demo {
-	background-color: skyblue ;
+	background-color: aqua;
 }
-</style>>
+</style>

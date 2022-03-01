@@ -1,9 +1,9 @@
 <template>
   <div>
       <MySchool></MySchool>
-      <MyStudent />
-      <MyStudent />
-      <MyStudent />
+      <MyStudent name="Student1" address="add1" age="18"/>
+      <MyStudent name="Student2" address="add2" age="19"/>
+      <MyStudent name="Student3" address="add3" :age="222"/>
   </div>
 </template>
 

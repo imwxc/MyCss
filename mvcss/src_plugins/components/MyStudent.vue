@@ -2,7 +2,7 @@
 	<!-- 组件的结构 -->
 	<div class="demo">
 		<h1>{{ msg }}</h1>
-		<h4 >name:{{ name }}</h4>
+		<h4 @click="showName">name:{{ name }}</h4>
 		<h4>address:{{ address }}</h4>
 		<h4>age:{{ age }}</h4>
 	</div>
@@ -10,6 +10,7 @@
 
 <script>
 // 组件交互的代码
+import { mixin } from "./mixin";
 export default {
 	name: "MyStudent",
 	data() {
@@ -19,7 +20,13 @@ export default {
 			msg: "MSG",
 			address: "beijing",
 		};
-	}
+	},
+	methods: {
+		updateAge() {
+			this.age++;
+		},
+	},
+	mixins: [mixin],
 };
 </script>
 
