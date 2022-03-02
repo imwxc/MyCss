@@ -4,7 +4,8 @@
 			<label>
 				<input
 					type="checkbox"
-					v-model="item.complated"
+					:checked="item.complated"
+					@change="handleChange(item.id)"
 				/>
 				<span>{{ item.title }}</span>
 			</label>
@@ -24,6 +25,16 @@ export default {
 		index: {
 			type: Number,
 			value: -1,
+		},
+		changeStatus: {
+			type: Function,
+		},
+	},
+	methods: {
+		handleChange(id) {
+			console.log("点击勾选框的ID ：", id);
+			//通知app将对应状态取反
+			this.changeStatus(id);
 		},
 	},
 };

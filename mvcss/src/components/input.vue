@@ -1,12 +1,42 @@
 <template>
 	<div class="todo-header">
-		<input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+		<input
+			type="text"
+			placeholder="请输入你的任务名称，按回车键确认"
+			@keyup.enter="add"
+			v-model="title"
+		/>
 	</div>
 </template>
 
 <script>
+import { nanoid } from "nanoid";
 export default {
-	name: "input",
+	name: "MyInput",
+	data() {
+		return {
+			title: "",
+		};
+	},
+	props: {
+		receiveTask: {
+			type: Function,
+		},
+	},
+	methods: {
+		add(e) {
+			console.log("通过事件获取了标题:", e.target.value);
+			console.log("双向数据绑定:", this.title);
+			//将输入包装成对象
+			this.title !== "" &&
+				this.receiveTask({
+					id: nanoid(),
+					title: this.title,
+					complated: false,
+				});
+			this.title = "";
+		},
+	},
 };
 </script>
 
