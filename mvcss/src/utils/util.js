@@ -8,3 +8,7 @@ export function ListDelete(list, propertie, key) {
 		1
 	);
 }
+
+export function ListUnshift(list, item){
+	return list.unshift(item);
+}

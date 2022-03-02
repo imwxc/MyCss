@@ -13,6 +13,7 @@ import Bottom from "./components/Bottom";
 import List from "./components/List";
 import MyInput from "./components/Input";
 import { nanoid } from "nanoid";
+import * as utils from "./utils/util"
 export default {
 	name: "App",
 	components: {
@@ -33,17 +34,10 @@ export default {
 		receiveTask(task) {
 			console.log("App 收到了新任务", task);
 			//需要使用Vue能够监听的方式来改变数组，不然视图不会更新
-			this.taskList.unshift(task);
+			utils.ListUnshift(this.taskList , task)
 		},
 		removeTask(id) {
-			this.taskList.splice(
-				this.taskList.indexOf(
-					this.taskList.find((item) => {
-						return item.id == id;
-					})
-				),
-				1
-			);
+			utils.ListDelete(this.taskList, "id" , id);
 		},
 	},
 };

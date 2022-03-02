@@ -25,8 +25,6 @@ export default {
 	},
 	methods: {
 		add(e) {
-			console.log("通过事件获取了标题:", e.target.value);
-			console.log("双向数据绑定:", this.title);
 			//将输入包装成对象
 			this.title !== "" &&
 				this.receiveTask({
