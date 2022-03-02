@@ -6,6 +6,7 @@
 				:key="item.id"
 				:index="index"
 				:item="item"
+                :removeTask="removeTask"
 			/>
 		</ul>
 	</div>
@@ -23,6 +24,9 @@ export default {
 			type: Array,
 			value: [],
 		},
+        removeTask:{
+            type:Function
+        }
 	},
 };
 </script>

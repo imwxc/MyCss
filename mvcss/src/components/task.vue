@@ -2,13 +2,10 @@
 	<div>
 		<li>
 			<label>
-				<input
-					type="checkbox"
-					v-model="item.complated"
-				/>
+				<input type="checkbox" v-model="item.complated" />
 				<span>{{ item.title }}</span>
 			</label>
-			<button class="btn btn-danger" style="display: none">删除</button>
+			<button class="btn btn-danger" @click="handleDelete(item.id)">删除</button>
 		</li>
 	</div>
 </template>
@@ -25,7 +22,18 @@ export default {
 			type: Number,
 			value: -1,
 		},
+        removeTask:{
+            type:Function
+        }
 	},
+    methods: {
+        handleDelete(id){
+            if(confirm("确定删除？")){
+                // 通知App删除对象
+                this.removeTask(id);
+            }
+        }
+    }
 };
 </script>
 
@@ -52,7 +60,7 @@ li label li input {
 
 li button {
 	float: right;
-	display: none;
+	visibility: hidden;
 	margin-top: 3px;
 }
 
@@ -62,5 +70,13 @@ li:before {
 
 li:last-child {
 	border-bottom: none;
+}
+
+li:hover {
+	background-color: #ddd;
+}
+
+li:hover button {
+	visibility:visible;
 }
 </style>

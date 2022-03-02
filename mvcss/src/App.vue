@@ -2,7 +2,7 @@
 	<div class="todo-container">
 		<div class="todo-wrap">
 			<MyInput :receiveTask="receiveTask" />
-			<List :taskList="taskList" />
+			<List :taskList="taskList" :removeTask="removeTask"/>
 			<Bottom />
 		</div>
 	</div>
@@ -35,11 +35,21 @@ export default {
 			//需要使用Vue能够监听的方式来改变数组，不然视图不会更新
 			this.taskList.unshift(task);
 		},
+		removeTask(id) {
+			this.taskList.splice(
+				this.taskList.indexOf(
+					this.taskList.find((item) => {
+						return item.id == id;
+					})
+				),
+				1
+			);
+		},
 	},
 };
 </script>
 
-<style scoped>
+<style>
 /*base*/
 body {
 	background: #fff;
