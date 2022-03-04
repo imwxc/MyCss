@@ -3,7 +3,7 @@
 		<div class="todo-wrap">
 			<MyInput :receiveTask="receiveTask" />
 			<List :taskList="taskList" :removeTask="removeTask"/>
-			<Bottom />
+			<Bottom :taskList="taskList"/>
 		</div>
 	</div>
 </template>

@@ -3,7 +3,9 @@
 		<label>
 			<input type="checkbox" />
 		</label>
-		<span> <span>已完成0</span> / 全部2 </span>
+		<span>
+			<span>已完成{{ finishTakskNum }}</span> / 全部{{ taskList.length }}
+		</span>
 		<button class="btn btn-danger">清除已完成任务</button>
 	</div>
 </template>
@@ -11,6 +13,17 @@
 <script>
 export default {
 	name: "bottom",
+	props: {
+		taskList: {
+			type: Array,
+		},
+	},
+	computed: {
+		finishTakskNum() {
+			return this.taskList.filter((item) => item.complated === true)
+				.length;
+		},
+	},
 };
 </script>
 
