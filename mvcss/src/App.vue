@@ -2,8 +2,11 @@
 	<div class="todo-container">
 		<div class="todo-wrap">
 			<MyInput :receiveTask="receiveTask" />
-			<List :taskList="taskList" :removeTask="removeTask"/>
-			<Bottom :taskList="taskList"/>
+			<div v-show="taskList.length">
+				<List :taskList="taskList" :removeTask="removeTask"/>
+				<Bottom :taskList="taskList" :emptyTaskList="emptyTaskList"/>
+			</div>
+			
 		</div>
 	</div>
 </template>
@@ -32,13 +35,15 @@ export default {
 	},
 	methods: {
 		receiveTask(task) {
-			console.log("App 收到了新任务", task);
 			//需要使用Vue能够监听的方式来改变数组，不然视图不会更新
 			utils.ListUnshift(this.taskList , task)
 		},
 		removeTask(id) {
 			utils.ListDelete(this.taskList, "id" , id);
 		},
+		emptyTaskList(){
+			utils.ListUpdate(this.taskList);
+		}
 	},
 };
 </script>
