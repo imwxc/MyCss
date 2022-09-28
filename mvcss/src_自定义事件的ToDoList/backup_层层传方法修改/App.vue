@@ -1,11 +1,9 @@
 <template>
 	<div class="todo-container">
 		<div class="todo-wrap">
-			<MyInput @receiveTask="receiveTask" />
-			<div v-show="taskList.length">
-				<List :taskList="taskList" @removeTask="removeTask" />
-				<Bottom :taskList="taskList" @emptyTaskList="emptyTaskList" />
-			</div>
+			<MyInput :receiveTask="receiveTask" />
+			<List :taskList="taskList" :changeStatus="changeStatus" />
+			<Bottom />
 		</div>
 	</div>
 </template>
@@ -15,44 +13,38 @@ import Bottom from "./components/Bottom";
 import List from "./components/List";
 import MyInput from "./components/Input";
 import { nanoid } from "nanoid";
-import * as utils from "./utils/util";
 export default {
 	name: "App",
 	components: {
 		Bottom,
 		List,
-		MyInput
+		MyInput,
 	},
 	data() {
 		return {
-			taskList: JSON.parse(localStorage.getItem("taskList")) || []
+			taskList: [
+				{ id: nanoid(), complated: true, title: "吃饭" },
+				{ id: nanoid(), complated: false, title: "睡觉" },
+				{ id: nanoid(), complated: false, title: "打豆豆" },
+			],
 		};
 	},
 	methods: {
 		receiveTask(task) {
+			console.log("App 收到了新任务", task);
 			//需要使用Vue能够监听的方式来改变数组，不然视图不会更新
-			utils.ListUnshift(this.taskList, task);
+			this.taskList.unshift(task);
 		},
-		removeTask(id) {
-			utils.ListDelete(this.taskList, "id", id);
+		changeStatus(id) {
+			this.taskList.forEach((task) => {
+				if (task.id === id) task.complated = !task.complated;
+			});
 		},
-		emptyTaskList() {
-			utils.ListUpdate(this.taskList);
-		}
 	},
-	watch: {
-		// 需要深度监听来改变数组中的每一项
-		taskList: {
-			deep: true,
-			handler(value) {
-				localStorage.setItem("taskList", JSON.stringify(value));
-			}
-		}
-	}
 };
 </script>
 
-<style>
+<style scoped>
 /*base*/
 body {
 	background: #fff;
