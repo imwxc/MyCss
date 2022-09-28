@@ -22,8 +22,8 @@ export default {
 		taskList: {
 			type: Array,
 			value: [],
-		}
-	}
+		},
+	},
 };
 </script>
 

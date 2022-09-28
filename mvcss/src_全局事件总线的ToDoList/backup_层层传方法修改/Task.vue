@@ -2,12 +2,14 @@
 	<div>
 		<li>
 			<label>
-				<input type="checkbox" v-model="item.complated" />
+				<input
+					type="checkbox"
+					:checked="item.complated"
+					@change="handleChange(item.id)"
+				/>
 				<span>{{ item.title }}</span>
 			</label>
-			<button class="btn btn-danger" @click="handleDelete(item.id)">
-				删除
-			</button>
+			<button class="btn btn-danger" style="display: none">删除</button>
 		</li>
 	</div>
 </template>
@@ -18,21 +20,23 @@ export default {
 	props: {
 		item: {
 			type: Object,
-			value: {}
+			value: {},
 		},
 		index: {
 			type: Number,
-			value: -1
-		}
+			value: -1,
+		},
+		changeStatus: {
+			type: Function,
+		},
 	},
 	methods: {
-		handleDelete(id) {
-			if (confirm("确定删除？")) {
-				// 通知App删除对象
-				this.$bus.$emit("removeTask", id);
-			}
-		}
-	}
+		handleChange(id) {
+			console.log("点击勾选框的ID ：", id);
+			//通知app将对应状态取反
+			this.changeStatus(id);
+		},
+	},
 };
 </script>
 
@@ -59,7 +63,7 @@ li label li input {
 
 li button {
 	float: right;
-	visibility: hidden;
+	display: none;
 	margin-top: 3px;
 }
 
@@ -69,13 +73,5 @@ li:before {
 
 li:last-child {
 	border-bottom: none;
-}
-
-li:hover {
-	background-color: #ddd;
-}
-
-li:hover button {
-	visibility: visible;
 }
 </style>

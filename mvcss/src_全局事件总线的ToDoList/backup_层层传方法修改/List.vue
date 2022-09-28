@@ -6,6 +6,7 @@
 				:key="item.id"
 				:index="index"
 				:item="item"
+				:changeStatus="changeStatus"
 			/>
 		</ul>
 	</div>
@@ -22,8 +23,11 @@ export default {
 		taskList: {
 			type: Array,
 			value: [],
-		}
-	}
+		},
+		changeStatus: {
+			type: Function,
+		},
+	},
 };
 </script>
 
