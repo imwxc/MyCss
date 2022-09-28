@@ -1,95 +1,26 @@
 <template>
-	<div class="todo-container">
-		<div class="todo-wrap">
-			<MyInput :receiveTask="receiveTask" />
-			<div v-show="taskList.length">
-				<List :taskList="taskList" :removeTask="removeTask"/>
-				<Bottom :taskList="taskList" :emptyTaskList="emptyTaskList"/>
-			</div>
-			
-		</div>
-	</div>
+  <div>
+      <MySchool></MySchool>
+      <MyStudent />
+      <MyStudent />
+      <MyStudent />
+  </div>
 </template>
 
 <script>
-import Bottom from "./components/Bottom";
-import List from "./components/List";
-import MyInput from "./components/Input";
-import { nanoid } from "nanoid";
-import * as utils from "./utils/util"
+import MyStudent from './components/MyStudent';
+import MySchool from './components/MySchool'
 export default {
-	name: "App",
-	components: {
-		Bottom,
-		List,
-		MyInput,
-	},
-	data() {
-		return {
-			taskList: [
-				{ id: nanoid(), complated: true, title: "吃饭" },
-				{ id: nanoid(), complated: false, title: "睡觉" },
-				{ id: nanoid(), complated: false, title: "打豆豆" },
-			],
-		};
-	},
-	methods: {
-		receiveTask(task) {
-			//需要使用Vue能够监听的方式来改变数组，不然视图不会更新
-			utils.ListUnshift(this.taskList , task)
-		},
-		removeTask(id) {
-			utils.ListDelete(this.taskList, "id" , id);
-		},
-		emptyTaskList(){
-			utils.ListUpdate(this.taskList);
-		}
-	},
-};
+    name: "App",
+    components:{
+        MyStudent,
+        MySchool
+    },
+    methods:{
+    }
+}
 </script>
 
 <style>
-/*base*/
-body {
-	background: #fff;
-}
 
-.btn {
-	display: inline-block;
-	padding: 4px 12px;
-	margin-bottom: 0;
-	font-size: 14px;
-	line-height: 20px;
-	text-align: center;
-	vertical-align: middle;
-	cursor: pointer;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-		0 1px 2px rgba(0, 0, 0, 0.05);
-	border-radius: 4px;
-}
-
-.btn-danger {
-	color: #fff;
-	background-color: #da4f49;
-	border: 1px solid #bd362f;
-}
-
-.btn-danger:hover {
-	color: #fff;
-	background-color: #bd362f;
-}
-
-.btn:focus {
-	outline: none;
-}
-
-.todo-container {
-	width: 600px;
-	margin: 0 auto;
-}
-.todo-container .todo-wrap {
-	padding: 10px;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-}
-</style>
+</style>·

@@ -1,7 +1,7 @@
 // 整个项目的入口文件
 
 import Vue from "vue"; // 此处引入的是runtime版本的vue，缺少了模版解析器
-import App from "./app.vue";
+import App from "./App.vue";
 
 Vue.config.productionTip = false;
 /**
