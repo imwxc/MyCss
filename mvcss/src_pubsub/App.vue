@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import Bottom from "./components/Bottom.vue";
-import List from "./components/List.vue";
-import MyInput from "./components/Input.vue";
+import Bottom from "./components/Bottom";
+import List from "./components/List";
+import MyInput from "./components/Input";
 import { nanoid } from "nanoid";
 import pubsub from 'pubsub-js'
 import * as utils from "./utils/util";
@@ -42,7 +42,7 @@ export default {
 		}
 	},
 	mounted(){
-		this.pubId = pubsub.subscribe('removeTask', (_, id)=>{
+		this.pubId = pubsub.subscribe('removeTask', (masName, id)=>{
 			utils.ListDelete(this.taskList, "id", id);
 		})
 	},
@@ -86,13 +86,6 @@ body {
 	color: #fff;
 	background-color: #da4f49;
 	border: 1px solid #bd362f;
-}
-
-.btn-edit{
-	color: #fff;
-	background-color: skyblue;
-	border: 1px solid skyblue;
-	margin-right : 4px;
 }
 
 .btn-danger:hover {

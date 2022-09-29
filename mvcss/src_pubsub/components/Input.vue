@@ -27,12 +27,11 @@ export default {
 		add(e) {
 			//将输入包装成对象
 			if(this.title !== ""){
-				this.$emit('receiveTask',{
-					id: nanoid(),
-					title: this.title,
-					complated: false,
-					editing: false,
-				})
+				// this.$emit('receiveTask',{
+				// 	id: nanoid(),
+				// 	title: this.title,
+				// 	complated: false,
+				// })
 			}
 			this.title = "";
 		},
