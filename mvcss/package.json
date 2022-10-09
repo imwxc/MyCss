@@ -12,7 +12,8 @@
     "nanoid": "^3.3.1",
     "vue": "^2.6.11",
     "pubsub-js": "^1.5.4",
-    "animate.css": "^4.1.1"
+    "animate.css": "^4.1.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
