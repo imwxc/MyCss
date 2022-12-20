@@ -6,10 +6,10 @@
 			<option :value="2">2</option>
 			<option :value="3">3</option>
 		</select>
-        <button @click="increase"> + </button>
-        <button @click="decrease"> - </button>
-        <button @click="oddNumberIncrease"> 当前为奇数时加 </button>
-        <button @click="waitIncrease"> 等500ms再加 </button>
+		<button @click="increase">+</button>
+		<button @click="decrease">-</button>
+		<button @click="oddNumberIncrease">当前为奇数时加</button>
+		<button @click="waitIncrease">等500ms再加</button>
 	</div>
 </template>
 
@@ -18,25 +18,29 @@ export default {
 	name: "Count",
 	data() {
 		return {
-            countNum: 0, // 当前的和
-            addNum: 1, // 选择的数字
-        };
+			countNum: 0, // 当前的和
+			addNum: 1 // 选择的数字
+		};
 	},
 	components: {},
-    methods: {
-        increase(){
-
-        },
-        decrease(){
-
-        },
-        oddNumberIncrease(){
-
-        },
-        waitIncrease(){
-
-        }
-    }
+	methods: {
+		increase() {
+			this.countNum += this.n;
+		},
+		decrease() {
+			this.countNum -= this.n;
+		},
+		oddNumberIncrease() {
+			if (this.countNum % 2 === 0) {
+				this.countNum += this.n;
+			}
+		},
+		waitIncrease() {
+			setTimeout(() => {
+				this.countNum += this.n;
+			}, 500);
+		}
+	}
 };
 /*****
  * 插槽：
@@ -52,6 +56,6 @@ body {
 	background: #fff;
 }
 button {
-    margin-left: 5px;
+	margin-left: 5px;
 }
 </style>

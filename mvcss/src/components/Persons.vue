@@ -1,19 +1,12 @@
 import { mapGetters } from 'vuex';
 <template>
 	<div class="container">
-		<h1>当前求和为：{{ countNum }}</h1>
-		<h3>当前求和后复杂运算结果为：{{ bigSum }}</h3>
-		<h4>学校: {{ school }}</h4>
-		<h4>name: {{ name }}</h4>
-		<select v-model="addNum">
-			<option :value="1">1</option>
-			<option :value="2">2</option>
-			<option :value="3">3</option>
-		</select>
-		<button @click="increase(addNum)">+</button>
-		<button @click="decrease(addNum)">-</button>
-		<button @click="oddNumberIncrease(addNum)">当前为奇数时加</button>
-		<button @click="waitIncrease(addNum)">等500ms再加</button>
+		<h1>人员列表</h1>
+		<input type="text" placeholder="请输入名字" :value="newPersonName" />
+		<button @click="addPerson">添加</button>
+		<ul>
+			<li v-for="item in personList" :key="item.id">{{ item.name }}</li>
+		</ul>
 	</div>
 </template>
 
@@ -21,39 +14,22 @@ import { mapGetters } from 'vuex';
 //  mapMutations, mapActions 在使用时如果需要传参，需要在template绑定事件时就将参数传递进去
 import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 export default {
-	name: "Count",
+	name: "Persons",
 	data() {
 		return {
-			addNum: 1 // 选择的数字
+			newPersonName: ""
 		};
 	},
 	computed: {
-		...mapState(["countNum", "school", "name"]),
-		...mapGetters({
-			bigSum: "bigSum"
-		})
+		...mapState(["personList"]),
+		...mapGetters({})
 	},
 
 	components: {},
-	mounted() {
-		console.log(
-			"mapState",
-			mapState({
-				countNum: "countNum",
-				school: "school",
-				name: "name"
-			})
-		);
-	},
 	methods: {
-		...mapMutations({
-			increase: "INCREASE",
-			decrease: "DECREASE"
-		}),
-		...mapActions({
-			oddNumberIncrease: "increaseOdd",
-			waitIncrease: "increaseWait" 
-		})
+		addPerson() {},
+		...mapMutations({}),
+		...mapActions({})
 	}
 };
 /*****

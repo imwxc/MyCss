@@ -1,13 +1,11 @@
 <template>
 	<div class="container">
 		<Count/>
-		<Persons/>
 	</div>
 </template>
 
 <script>
 import Count from "./components/Count.vue";
-import Persons from "./components/Persons.vue"
 export default {
 	name: "App",
 	data() {
@@ -15,7 +13,6 @@ export default {
 	},
 	components: {
 		Count,
-		Persons
 	}
 };
 /*****

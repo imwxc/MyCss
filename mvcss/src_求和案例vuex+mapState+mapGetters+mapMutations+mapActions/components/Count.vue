@@ -28,7 +28,30 @@ export default {
 		};
 	},
 	computed: {
+		// 手动写计算属性
+		// countNum(){
+		//     return this.$store.state.countNum
+		// },
+		// name(){
+		//     return this.$store.state.name
+		// },
+		// school(){
+		//     return this.$store.state.school
+		// },
+		// 借助mapState从state中自动生成的计算属性(对象写法，计算属性名和state中变量名不一致)
+		// ...mapState({
+		// 	countNum: "countNum",
+		// 	school: "school",
+		// 	name: "name"
+		// }),
+		// 借助mapState从state中自动生成的计算属性(数组写法，计算属性名和state中变量名一致)
 		...mapState(["countNum", "school", "name"]),
+		/**************************************************************** */
+		// 手动生成的计算属性
+		// bigSum() {
+		// 	return this.$store.getters.bigSum;
+		// },
+		// mapGetters生成的计算属性
 		...mapGetters({
 			bigSum: "bigSum"
 		})
@@ -46,13 +69,28 @@ export default {
 		);
 	},
 	methods: {
+		// increase() {
+		// 	// console.log("increase",this  ,this.addNum)
+		// 	// this.$store.dispatch('increase', this.addNum)
+		// 	this.$store.commit("INCREASE", this.addNum);
+		// },
+		// decrease() {
+		// 	// this.$store.dispatch('decrease',this.addNum)
+		// 	this.$store.commit("DECREASE", this.addNum);
+		// },
 		...mapMutations({
 			increase: "INCREASE",
 			decrease: "DECREASE"
 		}),
+		// oddNumberIncrease() {
+		// 	this.$store.dispatch("increaseOdd", this.addNum);
+		// },
+		// waitIncrease() {
+		// 	this.$store.dispatch("increaseWait", this.addNum);
+		// },
 		...mapActions({
 			oddNumberIncrease: "increaseOdd",
-			waitIncrease: "increaseWait" 
+			waitIncrease: "increaseWait"
 		})
 	}
 };
