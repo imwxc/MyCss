@@ -30,3 +30,6 @@
         <router-link class="nav-item" active-class="active" to="/home">Home</router-link>
         展示组件
         <router-view > </router-view>
+        组件切换后会被销毁
+        路由组件放在pages文件夹下
+        每个组件有自己的$route（存储自己的路由信息），一个应用只有一个$router

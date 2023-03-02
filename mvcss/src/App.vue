@@ -1,5 +1,7 @@
 <template>
-	<div class="container">
+	<div class="root">  
+		<Banner/>
+		<div class="container">
 		<div class="nav">
 			<!-- 实现路由切换 -->
 			<router-link class="nav-item" active-class="active" to="/home">Home</router-link>
@@ -11,11 +13,14 @@
 			<router-view > </router-view>
 		</div>
 	</div>
+	</div>
+
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import About from "./components/About.vue";
+import Home from "./pages/Home.vue";
+import About from "./pages/About.vue";
+import Banner from "./components/Banner.vue";
 
 export default {
 	name: "App",
@@ -25,7 +30,7 @@ export default {
 		};
 	},
 	methods:{
-		clickHome(){
+		clickHome(){ 
 			console.log("clickHome")
 		},
 		clickAbout(){
@@ -35,6 +40,7 @@ export default {
 	components: {
 		Home,
 		About,
+		Banner
 	},
 };
 /*****
@@ -49,6 +55,10 @@ export default {
 /*base*/
 body {
 	background: #fff;
+}
+.root{
+	display: flex;
+	flex-direction: column;
 }
 .container {
 	display: flex;
