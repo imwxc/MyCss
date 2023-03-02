@@ -3,7 +3,7 @@
 import Vue from "vue"; // 此处引入的是runtime版本的vue，缺少了模版解析器
 import App from "./App.vue";
 // import store from "./store/index"
-// import router from "./router/index"
+import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false;
 // import store from "./store"
@@ -15,6 +15,11 @@ Vue.config.productionTip = false;
  *    2.runtime版需要使用render函数来渲染收到的函数中的指定内容
  *
  */
+const router = new VueRouter({
+	
+})
+
+Vue.use(VueRouter)
 
 // 创建Vue实例对象
 new Vue({
@@ -24,4 +29,5 @@ new Vue({
 		Vue.prototype.$bus = this
 	},
 	// store, 
+	router
 }).$mount("#app");
