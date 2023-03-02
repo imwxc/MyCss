@@ -19,3 +19,14 @@
         value为组件，改变展示内容
     2.后端路由：
         value为function，返回响应数据
+
+### 5.router写法
+    1.前端写法
+        new VueRouter({
+            path: '***',
+            component: ***
+        })
+        切换路由
+        <router-link class="nav-item" active-class="active" to="/home">Home</router-link>
+        展示组件
+        <router-view > </router-view>

@@ -1,14 +1,14 @@
 <template>
 	<div class="container">
 		<div class="nav">
-			<div class="nav-item" :class="active" @click="clickHome">Home</div>
-			<div class="nav-item" :class="active" @click="clickAbout">
+			<!-- 实现路由切换 -->
+			<router-link class="nav-item" active-class="active" to="/home">Home</router-link>
+			<router-link class="nav-item" active-class="active" to="/about">
 				About
-			</div>
+			</router-link>
 		</div>
 		<div class="sub-container">
-			<Home />
-			<About />
+			<router-view > </router-view>
 		</div>
 	</div>
 </template>
@@ -16,6 +16,7 @@
 <script>
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
+
 export default {
 	name: "App",
 	data() {
