@@ -2,17 +2,19 @@ import { mapGetters } from 'vuex';
 <template>
 	<div class="container">
 		<h1>人员列表</h1>
-		<input type="text" placeholder="请输入名字" :value="newPersonName" />
+		<input type="text" placeholder="请输入名字" v-model="newPersonName" />
 		<button @click="addPerson">添加</button>
 		<ul>
 			<li v-for="item in personList" :key="item.id">{{ item.name }}</li>
 		</ul>
+		<h3>count组件求和为: {{sum}}</h3>
 	</div>
 </template>
 
 <script>
 //  mapMutations, mapActions 在使用时如果需要传参，需要在template绑定事件时就将参数传递进去
 import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
+import { nanoid } from "nanoid";
 export default {
 	name: "Persons",
 	data() {
@@ -21,13 +23,23 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(["personList"]),
-		...mapGetters({})
+		// ...mapState(["personList"]),
+		// ...mapGetters({}),
+		personList(){
+			return this.$store.state.personList
+		},
+		sum(){
+			return this.$store.state.countNum
+		}
 	},
 
 	components: {},
 	methods: {
-		addPerson() {},
+		addPerson() {
+			const personObg = {id: nanoid(), name: this.newPersonName}
+			this.$store.commit('ADD_PERSON',personObg);
+			this.newPersonName = ''
+		},
 		...mapMutations({}),
 		...mapActions({})
 	}

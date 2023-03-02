@@ -31,7 +31,12 @@ const mutations = {
 	},
 	DECREASE(state, value) {
 		state.countNum -= value;
-	}
+	},
+	ADD_PERSON(state, value) {
+		// const lastId = state.personList[state.personList.length - 1].id;
+		state.personList.unshift(value);
+	},
+
 };
 
 const state = {

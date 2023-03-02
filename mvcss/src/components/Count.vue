@@ -14,6 +14,7 @@ import { mapGetters } from 'vuex';
 		<button @click="decrease(addNum)">-</button>
 		<button @click="oddNumberIncrease(addNum)">当前为奇数时加</button>
 		<button @click="waitIncrease(addNum)">等500ms再加</button>
+		<h3>person组件总人数为: {{personList.length}}</h3>
 	</div>
 </template>
 
@@ -24,14 +25,14 @@ export default {
 	name: "Count",
 	data() {
 		return {
-			addNum: 1 // 选择的数字
+			addNum: 1, // 选择的数字
 		};
 	},
 	computed: {
-		...mapState(["countNum", "school", "name"]),
+		...mapState(["countNum", "school", "name", "personList"]),
 		...mapGetters({
-			bigSum: "bigSum"
-		})
+			bigSum: "bigSum",
+		}),
 	},
 
 	components: {},
@@ -41,20 +42,20 @@ export default {
 			mapState({
 				countNum: "countNum",
 				school: "school",
-				name: "name"
+				name: "name",
 			})
 		);
 	},
 	methods: {
 		...mapMutations({
 			increase: "INCREASE",
-			decrease: "DECREASE"
+			decrease: "DECREASE",
 		}),
 		...mapActions({
 			oddNumberIncrease: "increaseOdd",
-			waitIncrease: "increaseWait" 
-		})
-	}
+			waitIncrease: "increaseWait",
+		}),
+	},
 };
 /*****
  * 插槽：
