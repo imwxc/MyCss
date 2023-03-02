@@ -21,7 +21,7 @@ const actions = {
 		setTimeout(() => {
 			context.commit("INCREASE", value);
 		}, 500);
-	} 
+	}
 };
 
 const mutations = {
