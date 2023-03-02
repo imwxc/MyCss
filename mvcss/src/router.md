@@ -14,4 +14,8 @@
     1.一组key-value的映射关系
     2. key为路径，value为function 或者 组件
 
-### 4.
+### 4.路由分类
+    1.前端路由：
+        value为组件，改变展示内容
+    2.后端路由：
+        value为function，返回响应数据

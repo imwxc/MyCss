@@ -3,9 +3,10 @@
 import Vue from "vue"; // 此处引入的是runtime版本的vue，缺少了模版解析器
 import App from "./App.vue";
 // import store from "./store/index"
+// import router from "./router/index"
 
 Vue.config.productionTip = false;
-import store from "./store"
+// import store from "./store"
 /**
  * 不同版本的Vue：
  *    1.普通版和runtime版的区别：
@@ -22,5 +23,5 @@ new Vue({
 	beforeCreate(){
 		Vue.prototype.$bus = this
 	},
-	store, 
+	// store, 
 }).$mount("#app");

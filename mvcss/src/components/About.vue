@@ -1,26 +1,23 @@
 <template>
 	<div class="container">
-		<div class="nav">
-			<div class="" @click="clickHome">Home</div>
-			<div class="" @click="clickAbout">About</div>
-		</div>
-		<div class="sub-container">
-			
-		</div>
+		about的内容
 	</div>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import About from "./components/About.vue"
+// import { nanoid } from "nanoid";
 export default {
-	name: "App",
+	name: "About",
 	data() {
-		return {};
+		return {
+			newPersonName: ""
+		};
 	},
-	components: {
-		Home,
-		About
+	computed: {
+	},
+
+	components: {},
+	methods: {
 	}
 };
 /*****
@@ -31,20 +28,12 @@ export default {
  */
 </script>
 
-<style lang="less"> scoped>
+<style scoped>
 /*base*/
 body {
 	background: #fff;
 }
-.container {
-	display: flex;
-	flex-direction: row;
-	.nav{
-		display: flex;
-		flex-direction: column;
-	}
-	.sub-container {
-
-	}
+button {
+	margin-left: 5px;
 }
 </style>
