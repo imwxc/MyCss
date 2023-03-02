@@ -1,27 +1,40 @@
 <template>
 	<div class="container">
 		<div class="nav">
-			<div class="" @click="clickHome">Home</div>
-			<div class="" @click="clickAbout">About</div>
+			<div class="nav-item" :class="active" @click="clickHome">Home</div>
+			<div class="nav-item" :class="active" @click="clickAbout">
+				About
+			</div>
 		</div>
 		<div class="sub-container">
-			
+			<Home />
+			<About />
 		</div>
 	</div>
 </template>
 
 <script>
 import Home from "./components/Home.vue";
-import About from "./components/About.vue"
+import About from "./components/About.vue";
 export default {
 	name: "App",
 	data() {
-		return {};
+		return {
+			active: "",
+		};
+	},
+	methods:{
+		clickHome(){
+			console.log("clickHome")
+		},
+		clickAbout(){
+			console.log("clickAbout")
+		}
 	},
 	components: {
 		Home,
-		About
-	}
+		About,
+	},
 };
 /*****
  * 插槽：
@@ -31,7 +44,7 @@ export default {
  */
 </script>
 
-<style lang="less"> scoped>
+<style lang="less" scoped>
 /*base*/
 body {
 	background: #fff;
@@ -39,12 +52,22 @@ body {
 .container {
 	display: flex;
 	flex-direction: row;
-	.nav{
+	.nav {
 		display: flex;
 		flex-direction: column;
+		.nav-item {
+			padding: 12px;
+			border: 1px solid;
+			background-color: white;
+			&.active {
+				background-color: aqua;
+			}
+		}
 	}
 	.sub-container {
-
+		padding: 12px;
+		border: 1px solid;
+		background-color: white;
 	}
 }
 </style>
