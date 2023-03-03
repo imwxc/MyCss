@@ -3,6 +3,7 @@ import About from "../pages/About"
 import Home from "../pages/Home"
 import News from "../pages/News"
 import Message from "../pages/Message"
+import Detail from "../pages/Detail"
 // 创建路由器
 const router = new VueRouter({
     routes: [
@@ -20,7 +21,13 @@ const router = new VueRouter({
                 },
                 {
                     path: 'message',
-                    component: Message
+                    component: Message,
+                    children: [
+                        {
+                            path: 'detail',
+                            component: Detail
+                        }
+                    ]
                 }
             ]
         },
