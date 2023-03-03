@@ -25,7 +25,8 @@ const router = new VueRouter({
                     component: Message,
                     children: [
                         {
-                            path: 'detail',
+                            path: 'detail/:id/:title',
+                            // path: 'detail',
                             component: Detail,
                             name: 'xiangqing'
                         }

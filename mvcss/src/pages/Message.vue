@@ -4,9 +4,13 @@
 			<ul>
 				<li v-for="m in messageList" :key="m.id">
                     <!-- query传参 字符串写法 -->
-					<!-- <router-link :to="parseUrl(m)">{{ m.title }}</router-link> -->
+					<!-- <router-link :to="parseQuery(m)">{{ m.title }}</router-link> -->
                     <!-- query传参 对象写法 -->
-                    <router-link :to="parseUrlObj(m)">{{ m.title }}</router-link>
+                    <!-- <router-link :to="parseQueryObj(m)">{{ m.title }}</router-link> -->
+                    <!-- params传参 原始写法 -->
+                    <!-- <router-link :to="parseParams(m)">{{ m.title }}</router-link> -->
+                    <!-- params传参 对象写法 -->
+                    <router-link :to="parseParamsObj(m)">{{ m.title }}</router-link>
 				</li>
 			</ul>
 		</div>
@@ -34,14 +38,27 @@ export default {
 	computed: {},
 	components: {},
 	methods: {
-		parseUrl(m) {
+		parseQuery(m) {
 			return `/home/message/detail?id=${m.id}&title=${m.title}`;
 		},
-        parseUrlObj(m){
+        parseQueryObj(m){
 			return {
                 // path: '/home/message/detail',
                 name: 'xiangqing',
                 query: {
+                    ...m
+                }
+            }
+		},
+        parseParams(m){
+            return `/home/message/detail/${m.id}/${m.title}`;
+        },
+        // 不能使用path！！！
+        parseParamsObj(m){
+			return {
+                // path: '/home/message/detail',
+                name: 'xiangqing',
+                params: {
                     ...m
                 }
             }
