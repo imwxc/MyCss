@@ -1,17 +1,30 @@
 import VueRouter from "vue-router"
 import About from "../pages/About"
 import Home from "../pages/Home"
+import News from "../pages/News"
+import Message from "../pages/Message"
 // 创建路由器
 const router = new VueRouter({
     routes: [
         {
             path: '/about',
-            component: About
+            component: About,
         },
         {
             path: '/home',
-            component: Home
-        }
+            component: Home,
+            children: [
+                {
+                    path: 'news',
+                    component: News
+                },
+                {
+                    path: 'message',
+                    component: Message
+                }
+            ]
+        },
+        
     ]
 })
 export default router

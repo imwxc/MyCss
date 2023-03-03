@@ -1,6 +1,28 @@
 <template>
-	<div class="container">
-		home的内容
+	<div>
+		<div class="container">
+			home的内容
+			<div class="sub-banner">二级导航</div>
+			<div class="trip-container">
+				<div class="sub-nav">
+					<router-link
+						class="nav-item"
+						active-class="active"
+						to="/home/news"
+						>news</router-link
+					>
+					<router-link
+						class="nav-item"
+						active-class="active"
+						to="/home/message"
+						>message</router-link
+					>
+				</div>
+				<div class="sub-router-view">
+					<router-view> </router-view>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -10,15 +32,13 @@ export default {
 	name: "Home",
 	data() {
 		return {
-			newPersonName: ""
+			newPersonName: "",
 		};
 	},
-	computed: {
-	},
+	computed: {},
 
 	components: {},
-	methods: {
-	} 
+	methods: {},
 };
 /*****
  * 插槽：
@@ -28,12 +48,26 @@ export default {
  */
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 /*base*/
 body {
 	background: #fff;
 }
 button {
 	margin-left: 5px;
+}
+div {
+	border: 1px solid;
+	padding: 4px;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+}
+.sub-nav {
+	.nav-item {
+		padding: 4px;
+		border: 1px solid aqua;
+	}
 }
 </style>

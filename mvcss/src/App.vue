@@ -10,7 +10,7 @@
 			</router-link>
 		</div>
 		<div class="sub-container">
-			<router-view > </router-view>
+			<router-view class="App"> </router-view>
 		</div>
 	</div>
 	</div>
@@ -79,6 +79,8 @@ body {
 		padding: 12px;
 		border: 1px solid;
 		background-color: white;
+		display: flex;
+		flex-direction: column;
 	}
 }
 </style>

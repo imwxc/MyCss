@@ -1,24 +1,26 @@
 <template>
 	<div class="container">
-		about的内容
+		<ul>
+            <li>news1</li>
+            <li>news2</li>
+            <li>news3</li>
+        </ul>
 	</div>
 </template>
 
 <script>
 // import { nanoid } from "nanoid";
 export default {
-	name: "About",
+	name: "News",
 	data() {
 		return {
-			newPersonName: ""
+			newPersonName: "",
 		};
 	},
-	computed: {
-	},
+	computed: {},
 
 	components: {},
-	methods: {
-	}
+	methods: {},
 };
 /*****
  * 插槽：
@@ -28,12 +30,5 @@ export default {
  */
 </script>
 
-<style lang="less" scoped>
-/*base*/
-body {
-	background: #fff;
-}
-button {
-	margin-left: 5px;
-}
+<style lang='less' scoped>
 </style>
