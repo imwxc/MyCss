@@ -39,7 +39,8 @@ export default {
 		},
         parseUrlObj(m){
 			return {
-                path: '/home/message/detail',
+                // path: '/home/message/detail',
+                name: 'xiangqing',
                 query: {
                     ...m
                 }

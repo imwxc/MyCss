@@ -10,6 +10,7 @@ const router = new VueRouter({
         {
             path: '/about',
             component: About,
+            name: 'guanyu'
         },
         {
             path: '/home',
@@ -25,7 +26,8 @@ const router = new VueRouter({
                     children: [
                         {
                             path: 'detail',
-                            component: Detail
+                            component: Detail,
+                            name: 'xiangqing'
                         }
                     ]
                 }
