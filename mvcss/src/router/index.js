@@ -28,7 +28,23 @@ const router = new VueRouter({
                             path: 'detail/:id/:title',
                             // path: 'detail',
                             component: Detail,
-                            name: 'xiangqing'
+                            name: 'xiangqing',
+                            // props 第一种写法, 会以props传给details组件
+                            // props: {
+                            //     a:1,
+                            //     b:2
+                            // }
+                            //props 第二种写法, boolean 为true时，路由组件收到的所有params参数都传给组件
+                            // props: true
+
+                            // props 第三种写法 function
+                            props($route){
+                                const { id , title } = $route.query
+                                return {
+                                    id,
+                                    title
+                                }
+                            }
                         }
                     ]
                 }
