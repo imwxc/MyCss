@@ -19,16 +19,20 @@
 					>
 				</div>
 				<div class="sub-router-view">
-					<router-view> </router-view>
+					<!-- include 输入组件name  -->
+					<keep-alive :include="['News','Message']">
+						<router-view> </router-view>
+					</keep-alive>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 // import { nanoid } from "nanoid";
-export default {
+import Vue from "vue";
+export default Vue.extend({
 	name: "Home",
 	data() {
 		return {
@@ -39,7 +43,7 @@ export default {
 
 	components: {},
 	methods: {},
-};
+});
 /*****
  * 插槽：
  * 	默认插槽： 子组件中定义 slot 父组件中降数据以及html结构定义

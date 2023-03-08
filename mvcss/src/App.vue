@@ -1,48 +1,49 @@
 <template>
-	<div class="root">  
-		<Banner/>
+	<div class="root">
+		<Banner />
 		<div class="container">
-		<div class="nav">
-			<!-- 实现路由切换 -->
-			<router-link class="nav-item" active-class="active" to="/home">Home</router-link>
-			<router-link class="nav-item" active-class="active" to="/about">
-				About
-			</router-link>
-		</div>
-		<div class="sub-container">
-			<router-view class="App"> </router-view>
+			<div class="nav">
+				<!-- 实现路由切换 -->
+				<router-link class="nav-item" active-class="active" to="/home"
+					>Home</router-link
+				>
+				<router-link class="nav-item" active-class="active" to="/about">
+					About
+				</router-link>
+			</div>
+			<div class="sub-container">
+				<router-view class="App"> </router-view>
+			</div>
 		</div>
 	</div>
-	</div>
-
 </template>
 
-<script>
+<script lang="ts">
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
 import Banner from "./components/Banner.vue";
-
-export default {
+import Vue from "vue";
+export default Vue.extend({
 	name: "App",
 	data() {
 		return {
 			active: "",
 		};
 	},
-	methods:{
-		clickHome(){ 
-			console.log("clickHome")
+	methods: {
+		clickHome() {
+			console.log("clickHome");
 		},
-		clickAbout(){
-			console.log("clickAbout")
-		}
+		clickAbout() {
+			console.log("clickAbout");
+		},
 	},
 	components: {
 		Home,
 		About,
-		Banner
+		Banner,
 	},
-};
+});
 /*****
  * 插槽：
  * 	默认插槽： 子组件中定义 slot 父组件中降数据以及html结构定义
@@ -56,7 +57,7 @@ export default {
 body {
 	background: #fff;
 }
-.root{
+.root {
 	display: flex;
 	flex-direction: column;
 }

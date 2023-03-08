@@ -6,11 +6,13 @@
                     <!-- query传参 字符串写法 -->
 					<!-- <router-link :to="parseQuery(m)">{{ m.title }}</router-link> -->
                     <!-- query传参 对象写法 -->
-                    <!-- <router-link :to="parseQueryObj(m)">{{ m.title }}</router-link> -->
+                    <router-link :to="parseQueryObj(m)">{{ m.title }}</router-link>
                     <!-- params传参 原始写法 -->
                     <!-- <router-link :to="parseParams(m)">{{ m.title }}</router-link> -->
                     <!-- params传参 对象写法 -->
-                    <router-link :to="parseParamsObj(m)">{{ m.title }}</router-link>
+                    <!-- <router-link :to="parseParamsObj(m)">{{ m.title }}</router-link> -->
+					<button @click="pushShow(m)">push查看</button>
+					<button @click="replaceShow(m)">replace查看</button>
 				</li>
 			</ul>
 		</div>
@@ -63,6 +65,18 @@ export default {
                 }
             }
 		},
+		pushShow(m){
+			this.$router.push(
+				// this.parseParamsObj(m)
+				this.parseQueryObj(m)
+			)
+		},
+		replaceShow(m){
+			this.$router.replace(
+				// this.parseParamsObj(m)
+				this.parseQueryObj(m)
+			)
+		}
 	},
 };
 /*****

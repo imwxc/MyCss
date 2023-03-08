@@ -25,7 +25,7 @@ const router = new VueRouter({
                     component: Message,
                     children: [
                         {
-                            path: 'detail/:id/:title',
+                            path: 'detail', // 解析params时需要在path中进行配置
                             // path: 'detail',
                             component: Detail,
                             name: 'xiangqing',
@@ -39,6 +39,8 @@ const router = new VueRouter({
 
                             // props 第三种写法 function
                             props($route){
+                                console.log($route)
+                                // const { id , title } = $route.params
                                 const { id , title } = $route.query
                                 return {
                                     id,
