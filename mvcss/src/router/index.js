@@ -55,4 +55,14 @@ const router = new VueRouter({
         
     ]
 })
+
+// 全局前置路由守卫——初始化 & 每次路由切换之前调用
+router.beforeEach((to, from, next)=>{
+    if(localStorage.getItem('school') === 'school'){
+        next();
+    }
+    console.log(to, from)
+    next();
+})
+
 export default router
