@@ -6,6 +6,7 @@ import Message from "../pages/Message";
 import Detail from "../pages/Detail";
 // 创建路由器
 const router = new VueRouter({
+	mode: 'hash', // hash 模式
 	routes: [
 		{
 			path: "/about",
