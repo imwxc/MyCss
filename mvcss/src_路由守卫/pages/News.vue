@@ -1,30 +1,33 @@
 <template>
-	<div class="container">about的内容</div>
+	<div class="container">
+		<ul>
+            <li>news1 <input type="text" value="请输入信息"></li>
+            <li>news2 <input type="text" value="请输入信息"></li>
+            <li>news3 <input type="text" value="请输入信息"></li>
+        </ul>
+	</div>
 </template>
 
 <script lang="ts">
+// import { nanoid } from "nanoid";
 import Vue from "vue";
 export default Vue.extend({
-	name: "About",
+	name: "News",
 	data() {
 		return {
-			newPersonName: ""
+			newPersonName: "",
 		};
 	},
-	computed: {
-	},
-	// 通过路由规则进入该组件时调用
-	beforeRouteEnter (to: any, from: any, next: () => void) {
-		// ...
-		next()
-	},
-	// 通过路由规则离开 该组件时调用
-	beforeRouteLeave (to: any, from: any, next: () => void) {
-		// ...
-		next()
-	},
+	computed: {},
 	components: {},
-	methods: {
+	methods: {},
+	// 路由使用中
+	activated(){
+
+	},
+	//路由未使用
+	deactivated(){
+		
 	}
 });
 /*****
@@ -35,12 +38,5 @@ export default Vue.extend({
  */
 </script>
 
-<style lang="less" scoped>
-/*base*/
-body {
-	background: #fff;
-}
-button {
-	margin-left: 5px;
-}
+<style lang='less' scoped>
 </style>
