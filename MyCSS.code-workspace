@@ -4,11 +4,13 @@
 			"path": "./mvcss/"
 		},
 		{
+			"path": "./MyVueService/"
+		},
+		{
 			"path": "."
-		}
+		},
 	],
 	"settings": {
-		"vetur.format.defaultFormatter.js": "vscode-typescript",
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": true
 		},
