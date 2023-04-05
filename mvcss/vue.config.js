@@ -4,4 +4,5 @@ module.exports = {
     index: { entry: "src/main.ts" },
   },
   lintOnSave: false, // 关闭语法检查 
+  outputDir: '../MyVueService/static'
 };
