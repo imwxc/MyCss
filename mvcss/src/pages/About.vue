@@ -2,9 +2,8 @@
 	<div class="container">about的内容</div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
+<script lang="js">
+export default {
 	name: "About",
 	data() {
 		return {
@@ -14,19 +13,19 @@ export default Vue.extend({
 	computed: {
 	},
 	// 通过路由规则进入该组件时调用
-	beforeRouteEnter (to: any, from: any, next: () => void) {
+	beforeRouteEnter (to, from, next) {
 		// ...
 		next()
 	},
 	// 通过路由规则离开 该组件时调用
-	beforeRouteLeave (to: any, from: any, next: () => void) {
+	beforeRouteLeave (to, from, next) {
 		// ...
 		next()
 	},
 	components: {},
 	methods: {
 	}
-});
+};
 /*****
  * 插槽：
  * 	默认插槽： 子组件中定义 slot 父组件中降数据以及html结构定义
