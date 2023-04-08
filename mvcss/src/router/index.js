@@ -1,2 +1,2 @@
-import router from './route.ts'
+import router from './index'
 export default router

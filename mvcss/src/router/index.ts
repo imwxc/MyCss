@@ -1,4 +1,4 @@
-import VueRouter, { Route } from "vue-router";
+import VueRouter from "vue-router";
 import About from "../pages/About.vue";
 import Home from "../pages/Home.vue";
 import News from "../pages/News.vue";
