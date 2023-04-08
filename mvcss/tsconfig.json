@@ -14,7 +14,9 @@
       "src/**/*.d.ts",
       "src/**/*.vue",
       "src/**/*.tsx",
+      "node_modules/**/*.d.ts",
       "*.ts",
-      "vue.d.ts"
+      "vue.d.ts",
+      "type.d.ts"
     ]
   }

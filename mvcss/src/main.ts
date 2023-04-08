@@ -5,7 +5,15 @@ import App from "./App.vue";
 // import store from "./store/index"
 import VueRouter from 'vue-router'
 import router from './router'
-import ElementUI from "element-ui"
+// 引入elementUI组件库 完整版
+// import ElementUI from "element-ui"
+// import 'element-ui/lib/theme-chalk/index.css';
+
+// 引入elementUI组件库按需引入
+import { Button, Select} from "element-ui";
+
+Vue.component(Button.name, Button)
+Vue.component(Select.name, Select)
 
 Vue.config.productionTip = false;
 // import store from "./store"
@@ -18,7 +26,7 @@ Vue.config.productionTip = false;
  *
  */
 Vue.use(VueRouter)
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
 
 // 创建Vue实例对象
 new Vue({
