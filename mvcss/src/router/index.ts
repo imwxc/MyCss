@@ -1,9 +1,9 @@
 import VueRouter from "vue-router";
-import About from "../pages/About";
-import Home from "../pages/Home";
-import News from "../pages/News";
-import Message from "../pages/Message";
-import Detail from "../pages/Detail";
+import About from "../pages/About.vue";
+import Home from "../pages/Home.vue";
+import News from "../pages/News.vue";
+import Message from "../pages/Message.vue";
+import Detail from "../pages/Detail.vue";
 // 创建路由器
 const router = new VueRouter({
 	mode: 'hash', // hash 模式
@@ -61,7 +61,7 @@ const router = new VueRouter({
 			],
 		},
 	],
-});
+}) as VueRouter ;
 
 // 全局前置路由守卫——初始化 & 每次路由切换之前调用
 router.beforeEach((to, from, next) => {
@@ -93,10 +93,9 @@ router.afterEach((to, from) => {
 	if (to.meta.isAuth) {
 		// 判断是否需要鉴权
 		alert(`${to.path}需要鉴权`);
-		next();
 	}
 	console.log(to, from);
-	next();
 });
 
 export default router;
+// module.exports = router

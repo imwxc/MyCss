@@ -5,6 +5,7 @@ import App from "./App.vue";
 // import store from "./store/index"
 import VueRouter from 'vue-router'
 import router from './router'
+import ElementUI from "element-ui"
 
 Vue.config.productionTip = false;
 // import store from "./store"
@@ -17,6 +18,7 @@ Vue.config.productionTip = false;
  *
  */
 Vue.use(VueRouter)
+Vue.use(ElementUI)
 
 // 创建Vue实例对象
 new Vue({
