@@ -1,4 +1,4 @@
-import VueRouter from "vue-router";
+import VueRouter, { Route } from "vue-router";
 import About from "../pages/About.vue";
 import Home from "../pages/Home.vue";
 import News from "../pages/News.vue";
@@ -61,7 +61,7 @@ const router = new VueRouter({
 			],
 		},
 	],
-}) as VueRouter ;
+});
 
 // 全局前置路由守卫——初始化 & 每次路由切换之前调用
 router.beforeEach((to, from, next) => {
