@@ -9,6 +9,9 @@
 		{
 			"path": "."
 		},
+		{
+			"path": "mycss-vue3-cli"
+		}
 	],
 	"settings": {
 		"editor.codeActionsOnSave": {
