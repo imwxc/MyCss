@@ -26,6 +26,7 @@
 			  "singleQuote": true,
 			  "semi": false,
 			}
-		},
+        },
+        "liveServer.settings.multiRootWorkspaceName": "MyCss",
 	}
 }
