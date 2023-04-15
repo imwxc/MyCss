@@ -42,3 +42,15 @@
         实现原理：
             通过 Proxy： 拦截对象中任意属性的变化：属性的读写、添加、删除
             通过 Reflect： 对源对象的属性进行操作
+
+### ref 和 reactive对比
+    1.定义数据角度
+        ref用来定义基本类型数据
+        reactive用来定义对象 & 数组
+        ref定义对象和数组时会自动使用reactive
+    2.原理
+        ref使用Object.defineProperties()的get和set来实现数据劫持
+        reactive通过Proxy来实现数据劫持，并使用Reflect操作源对象
+    3.使用角度
+        ref定义的属性需要使用.value来操作
+        reactive不需要.value
