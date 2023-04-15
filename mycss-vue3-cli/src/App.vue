@@ -5,13 +5,23 @@
   </nav>
   <router-view /> -->
 	<div>
-		<div>测试setup写法{{ name }}{{ age }}</div>
+		<!-- <div>测试setup写法{{ name }}{{ age }}</div>
         <h3>{{ job.type }} + {{ job.salary }}</h3>
-		<h3>{{ job.a.b.c }}</h3>
-        <ul>
+        <br/>
+        <br/> -->
+        <h2>--------------------------------------------------</h2>
+        <!-- <Demo @hello="showHello" name="111" msg="222">
+            <template v-slot:123>
+                <h2> 12312313</h2>
+            </template>
+        </Demo> -->
+        <!-- <Demo2 /> -->
+        <Demo3 />
+		<!-- <h3>{{ job.a.b.c }}</h3> -->
+        <!-- <ul>
             <li v-for="a in job.lis" :key="a">{{ a }}</li>
         </ul>
-        <button @click="changInfo">修改信息</button>
+        <button @click="changInfo">修改信息</button> -->
 	</div>
 </template>
 
@@ -26,36 +36,51 @@
 </style>
 <script>
 import { ref, reactive } from 'vue';
+import Demo from './components/Demo.vue'
+import Demo2 from './components/Demo2.vue';
+import Demo3 from './components/Demo3.vue';
 export default {
 	name: "App",
-	setup(props) {
-		let name = ref("name"); // reference 
-		let age = ref(12);
-        let job = reactive({
-            type : 111,
-            salary: '30k',
-            a:{
-                b:{
-                    c: 999
-                }
-            },
-            lis:['11', 44,55]
-        })
-        // let num = reactive(666)
-        function changInfo(){
-            // name.value = 'name1'
-            // age.value =18
-            console.info('changInfo', job )
-            job.type = 222
-            job.a.b.c = 111
-            job.lis[2] = 5555
-        }
-		return {
-			name,
-			age,
-            changInfo,
-            job
-		};
-	},
+    components: {
+        Demo,
+        Demo2,
+        Demo3
+    },
+    // setup(){
+    //     return {
+    //         showHello: ()=>{
+    //             alert('hello')
+    //         }
+    //     }
+    // }
+	// setup(props) {
+	// 	let name = ref("name"); // reference 
+	// 	let age = ref(12);
+    //     let job = reactive({
+    //         type : 111,
+    //         salary: '30k',
+    //         // a:{
+    //         //     b:{
+    //         //         c: 999
+    //         //     }
+    //         // },
+    //         // lis:['11', 44,55]
+    //     })
+    //     // let num = reactive(666)
+    //     // function changInfo(){
+    //     //     // name.value = 'name1'
+    //     //     // age.value =18
+    //     //     console.info('changInfo', job )
+    //     //     job.type = 222
+    //     //     job.a.b.c = 111
+    //     //     job.lis[2] = 5555
+    //     // }
+	// 	return {
+	// 		name,
+	// 		age,
+    //         // changInfo,
+    //         job
+	// 	};
+	// },
 };
 </script>
