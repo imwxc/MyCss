@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <!-- <script src='../js/vue.js'></script> -->
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 源数据
+    let person = {
+        name: '111',
+        age: 1
+    }
+    
+    // 模拟Vue2实现响应式
+    // #region
+    // let p = {}
+    // Object.defineProperties(p,'name',{
+    //     get(){ // 读取person时调用
+    //         return person.name
+    //     },
+    //     set(val){ //修改person时调用
+    //         console.info(`set: ${val}`)
+    //         person.name = val
+    //     }
+    // })
+    // Object.defineProperties(p,'age',{
+    //     get(){ // 读取person时调用
+    //         return person.age
+    //     },
+    //     set(val){ //修改person时调用
+    //         console.info(`set: ${val}`)
+    //         person.age = val
+    //     }
+    // })
+    // #endregion
+    
+    // 模拟Vue3实现响应式
+    const p = new Proxy(
+        person,
+        {
+            get(target, propKey, receiver){
+                console.info('读取了p的属性', target, propKey, receiver)
+                return Reflect.get(target, propKey)
+            },
+            set(target, propKey, value, receiver){
+                console.info('修改或增加了p的属性', propKey)
+                // target[propKey] = value
+                return Reflect.set(target, propKey, value)
+            },
+            deleteProperty(target, propKey){
+                console.info('修改了p的属性', propKey)
+                // return delete target[propKey]
+                return Reflect.deleteProperty(target, propKey)
+            },
+            // defineProperty(target,propKey){
+
+            // }
+        }
+    )
+    const rp = new Reflect(person)
+</script>
+</html>

@@ -4,7 +4,15 @@
     <router-link to="/about">About</router-link>
   </nav>
   <router-view /> -->
-	<div>测试setup写法{{ name }}{{ age }}</div>
+	<div>
+		<div>测试setup写法{{ name }}{{ age }}</div>
+        <h3>{{ job.type }} + {{ job.salary }}</h3>
+		<h3>{{ job.a.b.c }}</h3>
+        <ul>
+            <li v-for="a in job.lis" :key="a">{{ a }}</li>
+        </ul>
+        <button @click="changInfo">修改信息</button>
+	</div>
 </template>
 
 <style lang="less">
@@ -15,36 +23,38 @@
 	text-align: center;
 	color: #2c3e50;
 }
-
-nav {
-	padding: 30px;
-
-	a {
-		font-weight: bold;
-		color: #2c3e50;
-
-		&.router-link-exact-active {
-			color: #42b983;
-		}
-	}
-}
 </style>
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import h from "vue";
+import { ref, reactive } from 'vue';
 export default {
 	name: "App",
 	setup(props) {
-		let name = "name";
-		let age = 12;
-		function hello(params) {
-			alert(`'哦我叫'+${name}+${age}`);
-		}
-		// return ()=>h('h1','header')
+		let name = ref("name"); // reference 
+		let age = ref(12);
+        let job = reactive({
+            type : 111,
+            salary: '30k',
+            a:{
+                b:{
+                    c: 999
+                }
+            },
+            lis:['11', 44,55]
+        })
+        // let num = reactive(666)
+        function changInfo(){
+            // name.value = 'name1'
+            // age.value =18
+            console.info('changInfo', job )
+            job.type = 222
+            job.a.b.c = 111
+            job.lis[2] = 5555
+        }
 		return {
 			name,
 			age,
-			hello,
+            changInfo,
+            job
 		};
 	},
 };
