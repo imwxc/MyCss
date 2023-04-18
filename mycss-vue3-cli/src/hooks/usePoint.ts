@@ -1,11 +1,10 @@
 import { onBeforeUnmount, onMounted, reactive } from "vue";
-
+const point = reactive({
+    x: 0,
+    y: 0,
+    id: Math.random()*100
+});
 export default function () {
-    const point = reactive({
-        x: 0,
-        y: 0,
-    });
-
     function updatePoint(event: GlobalEventHandlersEventMap["click"]) {
         point.x = event.pageX;
         point.y = event.pageY;

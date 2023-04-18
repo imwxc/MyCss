@@ -1,6 +1,10 @@
+import usePoint from '@/hooks/usePoint';
 <template>
     <div>
         <div>测试setup写法{{ name }}{{ age }}</div>
+        <h2>当前鼠标点击坐标为： x {{ point.x }} ， y{{ point.y }}</h2>
+        {{ point.id }}
+        <h2>----------------------------------------------</h2>
     </div>
 </template>
 <script lang="ts">
@@ -14,9 +18,10 @@ import {
     onBeforeUnmount,
     onUnmounted,
 } from "vue";
+import usePoint from "@/hooks/usePoint"
 export default {
     name: "Demo",
-    props: ["name", "msg"],
+    // props: ["name", "msg"],
     emits: ["hello"],
     setup() {
         // context.emit('hello')
@@ -51,6 +56,7 @@ export default {
         return {
             name,
             age,
+            point: usePoint()
         };
     },
     // 通过配置项的形式使用生命周期

@@ -2,6 +2,7 @@
     <div>
         <!-- <div>测试setup写法{{ name }}{{ age }}</div> -->
         <h2>当前鼠标点击坐标为： x {{ point.x }} ， y{{ point.y }}</h2>
+        {{ point.id }}
     </div>
 </template>
 <script lang="ts">
