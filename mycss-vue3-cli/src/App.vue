@@ -1,14 +1,5 @@
 <template>
-	<!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view /> -->
 	<div>
-		<!-- <div>测试setup写法{{ name }}{{ age }}</div>
-        <h3>{{ job.type }} + {{ job.salary }}</h3>
-        <br/>
-        <br/> -->
         <h2>--------------------------------------------------</h2>
         <!-- <Demo @hello="showHello" name="111" msg="222">
             <template v-slot:123>
@@ -16,12 +7,16 @@
             </template>
         </Demo> -->
         <!-- <Demo2 /> -->
-        <Demo3 />
+        <!-- <Demo3 /> -->
+        <!-- <button @click="showC">控制展示</button>  -->
+        <!-- <Demo4 v-if="showDemo"/> -->
+        <Demo5 />
 		<!-- <h3>{{ job.a.b.c }}</h3> -->
         <!-- <ul>
             <li v-for="a in job.lis" :key="a">{{ a }}</li>
         </ul>
-        <button @click="changInfo">修改信息</button> -->
+        -->
+        
 	</div>
 </template>
 
@@ -39,13 +34,27 @@ import { ref, reactive } from 'vue';
 import Demo from './components/Demo.vue'
 import Demo2 from './components/Demo2.vue';
 import Demo3 from './components/Demo3.vue';
+import Demo4 from './components/Demo4.vue';
+import Demo5 from './components/Demo5.vue';
 export default {
 	name: "App",
     components: {
         Demo,
         Demo2,
-        Demo3
+        Demo3,
+        Demo4,
+        Demo5
     },
+    setup(){
+        let showDemo = ref(true);
+        function showC(){
+            showDemo.value = !showDemo.value
+        }
+        return {
+            showDemo,
+            showC
+        }
+    }
     // setup(){
     //     return {
     //         showHello: ()=>{

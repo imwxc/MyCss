@@ -125,3 +125,5 @@
     watchEffect有些类似computed
         但是computed注重计算后的值,需要返回结果
         watchEffect注重监视过程,无需返回结果
+
+### vue3生命周期

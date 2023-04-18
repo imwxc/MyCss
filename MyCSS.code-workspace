@@ -15,9 +15,9 @@
 	],
 	"settings": {
 		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": true
+			"source.fixAll": true,
 		},
-		"eslint.validate": ["javascript", "javascriptreact", {"language":"vue","autoFix": true}],
+		"eslint.validate": ["javascript", "javascriptreact", {"language":"vue","autoFix": true}, "typescript"],
 		"eslint.autoFixOnSave": true,
 		"vetur.format.defaultFormatter.html": "prettyhtml",
 		"vetur.format.defaultFormatter.js": "prettier",
@@ -27,6 +27,16 @@
 			  "semi": false,
 			}
         },
-        "liveServer.settings.multiRootWorkspaceName": "MyCss",
+		"liveServer.settings.multiRootWorkspaceName": "MyCss",
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"eslint.alwaysShowStatus": true,
+		"stylelint.validate": [
+			"css",
+			"less",
+			"postcss",
+			"scss",
+			"vue",
+			"sass"
+		],
 	}
 }
