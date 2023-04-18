@@ -16,8 +16,9 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
     ],
     overrides: [],
-    parser: "@typescript-eslint/parser",
+    parser: "vue-eslint-parser",
     parserOptions: {
+        parser: "@typescript-eslint/parser",
         ecmaVersion: "latest",
         sourceType: "module",
     },
@@ -36,5 +37,8 @@ module.exports = {
                 tabWidth: 4,
             },
         ],
+        "vue/multi-word-component-names":[
+            "off"
+        ]
     },
 };

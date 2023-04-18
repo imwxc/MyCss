@@ -17,7 +17,7 @@ import {
 } from "vue";
 import usePoint from "@/hooks/usePoint"
 export default {
-    name: "DemoFive",
+    name: "Demo5",
     emits: ["hello"],
     setup() {
         // context.emit('hello')
