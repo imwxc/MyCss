@@ -127,3 +127,6 @@
         watchEffect注重监视过程,无需返回结果
 
 ### vue3生命周期
+    和vue2的不同点：
+        beforeDestroy --> beforeUnmount
+        destroyed --> unMounted
