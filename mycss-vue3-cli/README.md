@@ -130,3 +130,9 @@
     和vue2的不同点：
         beforeDestroy --> beforeUnmount
         destroyed --> unMounted
+
+### 自定义hook
+    本质是一个函数，将setup中的一系列组合操作进行封装
+    类似vue2的mixin
+    优点： 复用和封装代码
+
