@@ -1,61 +1,60 @@
 <template>
-	<div>
-		<div>测试setup写法{{ name }}{{ age }}</div>
-	</div>
+    <div>
+        <div>测试setup写法{{ name }}{{ age }}</div>
+    </div>
 </template>
-
-<style lang="less">
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-}
-</style>
-<script>
-import { ref, reactive, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
+<script lang="ts">
+import {
+    ref,
+    reactive,
+    onBeforeMount,
+    onMounted,
+    onBeforeUpdate,
+    onUpdated,
+    onBeforeUnmount,
+    onUnmounted,
+} from "vue";
 export default {
-	name: "Demo",
-    props: ['name', 'msg'],
-    emits: ['hello'],
-	setup() {
+    name: "Demo",
+    props: ["name", "msg"],
+    emits: ["hello"],
+    setup() {
         // context.emit('hello')
-		let name = ref("name"); // reference 
-		let age = ref(12);
+        let name = ref("name"); // reference
+        let age = ref(12);
 
         // 使用组合式来声明生命周期
         /*
         beforeCreate 和  created 都视作在etup
          */
         onBeforeMount(() => {
-            console.info('---------onBeforeMount---------')
-        })
+            console.info("---------onBeforeMount---------");
+        });
         onMounted(() => {
-            console.info('---------onMounted---------')
-        })
+            console.info("---------onMounted---------");
+        });
         onBeforeUpdate(() => {
-            console.info('---------onBeforeUpdate---------')
-        })
+            console.info("---------onBeforeUpdate---------");
+        });
 
         onUpdated(() => {
-            console.info('---------onUpdated---------')
-        })
+            console.info("---------onUpdated---------");
+        });
 
         onBeforeUnmount(() => {
-            console.info('---------onBeforeUnmount---------')
-        })
+            console.info("---------onBeforeUnmount---------");
+        });
         onUnmounted(() => {
-            console.info('---------onUnmounted---------')
-        })
-        
-		return {
-			name,
-			age
-		};
-	},
+            console.info("---------onUnmounted---------");
+        });
+
+        return {
+            name,
+            age,
+        };
+    },
     // 通过配置项的形式使用生命周期
-/*     beforeCreate() {
+    /*     beforeCreate() {
         console.info('-----beforeCreate----')
     },
     created() {
@@ -81,3 +80,13 @@ export default {
     }, */
 };
 </script>
+
+<style lang="less">
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+</style>

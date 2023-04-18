@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- <div>测试setup写法{{ name }}{{ age }}</div> -->
-        <h2>当前鼠标点击坐标为： x{{ x }} ， y{{ y }}</h2>
+        <h2>当前鼠标点击坐标为： x {{ point.x }} ， y{{ point.y }}</h2>
     </div>
 </template>
 <script lang="ts">
@@ -15,6 +15,7 @@ import {
     onBeforeUnmount,
     onUnmounted,
 } from "vue";
+import usePoint from "@/hooks/usePoint"
 export default {
     name: "DemoFive",
     emits: ["hello"],
@@ -22,14 +23,11 @@ export default {
         // context.emit('hello')
         // let name = ref("name"); // reference
         // let age = ref(12);
-        let ponit = reactive({
-            x: 999,
-            y: 0,
-        });
+        const point = usePoint()
         return {
             // name,
             // age
-            ponit,
+            point,
         };
     },
 };
