@@ -10,7 +10,7 @@
 			"path": "."
 		},
 		{
-			"path": "mycss-vue3-cli"
+			"path": "./mycss-vue3-cli/"
 		}
 	],
 	"settings": {
