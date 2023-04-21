@@ -11,7 +11,8 @@
         1.尽量不和vue2配置混用
         2.setup中不能访问vue2的配置
         3.重名时vue3优先
-        4.setup不能为async函数
+        4.当组件为同步调用时setup不能为async函数
+        5.组件为异步调用时，需要使用Suspense搭配进行，此时异步组件的setup可以返回promise
     
 ### ref函数
     作用：定义一个响应式的数据
@@ -136,3 +137,65 @@
     类似vue2的mixin
     优点： 复用和封装代码
 
+### toRef 和 toRefs
+    作用：创建一个ref对象，将其value指向另一个对象中的某个属性
+    语法： const xx = toRef(obj, 'key')
+    应用：reactive对象的某个属性暴露对外使用
+    toRefs：将传入的obj的所有属性都转为 ref对象
+
+### 其他组合api
+    1.shallowReactive 和 shallowRef 
+        shallowReactive：只处理对象最外层属性的响应式
+        shallowRef: 只处理基本数据类型的响应式， 不进行对象的响应式处理
+        使用时机：
+            若有对象层级较深，只希望外层属性变化时响应 使用 shallowReactive
+            若对象数据，后续功能不修改该对象中的属性，而是使用新对象替换 使用 shallowRef
+    
+    2. readonly 和 shallowReadonly
+        readonly 让一个响应式数据变为深度只读
+        shallowReadonly 让一个响应式数据变为浅度只读（只有浅层属性只读）
+        场景： 不希望数据被改动
+
+    3.toRaw 和 markRaw
+        toRaw：将一个reactive的响应式数据转为 普通的不可响应数据（ref声明的不可使用）
+            场景：用于读取响应式对象所对应的普通对象，对普通对象的所有操作都不会引起页面更新
+        markRaw： 将一个对象标记为不可响应的
+            场景：有些值不应该被设置为响应式的， 例如第三方类库
+                渲染具有不可变数据的大列表时，跳过响应式转换可以提高性能
+
+    4. customRef 自定义ref  
+        作用：创建一个自定义的ref， 并对其依赖项跟踪和更新触发进行显式控制
+        例子： 见Demo7（实现防抖效果） 
+    
+    5. provide 和 inject
+       作用： 实现祖孙组件间通信
+       方法：祖组件通过provide选项提供数据，子组件使用inject 来使用数据
+       使用：参照Demo8
+
+    6. 响应式数据的判断
+       isRef：检查一个对象是否为一个ref对象
+       isReactive： 检查一个对象是否由reactive创建的
+       isReadonly： 检查一个对象是否有readonly创建的只读代理
+       isProxy： 检查一个对象是否由 reactive 或 readonly 创建的代理
+
+### 组合式api的优势
+    1. options API存在的问题：
+       传统的optionsApi中，新增或修改时，需要在data，methods，computed中修改
+    2. composition Api优势
+       需求相关的代码可以有序组合在一起，
+
+### 新的组件
+    1. Fragment
+       在Vue2中， 组件必须有一个根标签
+       在Vue3中， 组件可以没有根标签， 内部会将多个标签包含在Fragment虚拟元素中
+       好处: 减少层级和内存占用  
+
+    2. TelePort
+       能够将组件的html结构移动到指定位置的技术
+       示例参照 Demo10
+
+    3. Suspense
+       异步组件的展示以及placeHolder的展示组件
+       示例参照 Demo11
+
+    
