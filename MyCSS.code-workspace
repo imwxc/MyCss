@@ -13,7 +13,7 @@
 			"path": "./mycss-vue3-cli/"
 		},
 		{
-			"path": "./myTypeScript"
+			"path": "./myTypeScript/"
 		}
 	],
 	"settings": {
