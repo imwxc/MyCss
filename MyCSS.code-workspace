@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "./mycss-vue3-cli/"
+		},
+		{
+			"path": "myTypeScript"
 		}
 	],
 	"settings": {
